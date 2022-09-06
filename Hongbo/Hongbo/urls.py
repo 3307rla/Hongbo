@@ -22,5 +22,6 @@ urlpatterns = [
     
     path('', views.mainFunc),
     
-    path('index', views.index), 
+    path('index', views.index),
+    
 ]
