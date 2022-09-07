@@ -1,160 +1,123 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>HongBo with NolBo</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap Icons-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-        <!-- SimpleLightbox plugin CSS-->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#about">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#services">H_MAP</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">통계서비스</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">문의게시판</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container px-4 px-lg-5 h-100">
-                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">홍보와놀보</h1>
-                        <br>
-                        <p class="text-white-75 mb-5">이것은 판매인가 홍보인가</p>
-                        
-                    </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5">Created by 3조</p>
-                        <a class="btn btn-primary btn-xl" href="#about">MAP</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- About-->
-        <section class="page-section bg-primary" id="about">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="text-white mt-0">We've got what you need!</h2>
-                        <hr class="divider divider-light" />
-                        <p class="text-white-75 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
-                       	<form action="/map" method='post'>
-                       		<select name="gender">
-                       			<option value=""></option>
-                       			<option value=""></option>
-                       			<option value=""></option>
-                       		</select>
-                       		<select name="age">
-                       			<option value=""></option>
-                       			<option value=""></option>
-                       			<option value=""></option>
-                       		</select>
-                       		<select name="subject">
-                       			<option value=""></option>
-                       			<option value=""></option>
-                       			<option value=""></option>
-                       		</select>
-                       		<input type="submit" value="Seach"/>
-                       	</form>
-                        <a class="btn btn-light btn-xl" href="#services">Get Started!</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-         <!-- Portfolio-->
-        <div id="portfolio">
-            <div class="container-fluid p-0">
-                <div class="row g-0">
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="https://www.naver.com/" title="Project Name">
-                            <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/1.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">바로가기</div>
-                                <div class="project-name">(주)판촉</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg" title="Project Name">
-                            <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/2.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/3.jpg" title="Project Name">
-                            <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/3.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/4.jpg" title="Project Name">
-                            <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/4.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/5.jpg" title="Project Name">
-                            <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/5.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/6.jpg" title="Project Name">
-                            <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/6.jpg" alt="..." />
-                            <div class="portfolio-box-caption p-3">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>  
-        <!-- Footer-->
-        <footer class="bg-light py-5">
-            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - Company Name</div></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="{% static 'js/scripts.js'%}"></script>
-        <!-- SimpleLightbox plugin JS-->
-        <script src="{% static 'js/scripts.js'%}"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'js/scripts.js'%}"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HongBo with NolBo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital@0;1&display=swap" rel="stylesheet">
+    <link href="{%static 'css/styles.css' %}" rel="stylesheet" />
 
-        <script src="{% static 'js/scripts.js'%}"></script>
-    </body>
+</head>
+<body>
+    <div class="wrap">
+        <div class="intro_bg">
+            <div class="header" id="link_header">  
+            <nav class="navbar">             
+                <ul class="navbar_menu">
+                    <li><a href="#link_header">HOME</a></li>
+                    <li><a href="#link_main_text0">H_MAP</a></li>
+                    <li><a href="#link_main_text1">통계서비스</a></li>
+                    <li><a href="#link_main_text2">문의게시판</a></li>
+                </ul>
+            </nav>
+            </div>
+                <div class="intro_text">
+                    <h1>홍보와 놀보</h1>
+                    <br>
+                    <br>
+                    <!-- <h4 class="contents">CREATE BY 3조</h4> -->
+                    <button class="button_4">MAP</button>
+                </div>  
+        </div>
+        
+        <!-- 이 부분 어떻게 써야할지 고민중 -->
+        <!-- <ul class="amount">
+            <li>
+                <div>
+                    <div class="contents1">1</div>
+                    <div class="result">2</div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="contents1">3</div>
+                    <div class="result">4</div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="contents1">5</div>
+                    <div class="result">6</div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="contents1">테스트1</div>
+                    <div class="result">테스트2</div>
+                </div>
+            </li>     
+        </ul> -->
+        <!-- amount end -->
+        <div class="main_text0" id="link_main_text0">
+            <h1>업체 선정 (카르셀 부분 적용할것)</h1>
+            <div class="contents1">
+               H_MAP 이 추천하는 업체에 맡겨보세요
+             <ul class="icons">
+                <li>
+                    <div class="icon_img">
+                        <img src="/static/img/icon0.png" >
+                    </div>
+                    <div class="contents1_bold">판촉사이트1</div>
+                    <div class="contents2">
+                        사이트 설명 간단하게 적기
+                    </div>
+                    <div class="more">
+                        MORE
+                    </div>
+                </li>
+                <li>
+                    <div class="icon_img">
+                        <img src="/static/img/icon1.png" >
+                    </div>
+                    <div class="contents1_bold">판촉사이트2</div>
+                    <div class="contents2">
+                        사이트 설명 간단하게 적기
+                    </div>
+                    <div class="more">
+                        MORE
+                    </div>
+                </li>
+                <li>
+                    <div class="icon_img">
+                        <img src="/static/img/icon3.png" >
+                    </div>
+                    <div class="contents1_bold">판촉사이트3</div>
+                    <div class="contents2">
+                        사이트 설명 간단하게 적기
+                    </div>
+                    <div class="more">
+                        MORE
+                    </div>
+                </li>
+             </ul>  
+            </div>
+        </div>
+        <div class="main_text1" id="link_main_text1">
+            <h1>SERVICE</h1>
+            <div class="service">
+                <div class="contents2">
+                  사이트 설명 방법 입니다.(수정할거임)
+                </div>        
+            </div>         
+        </div>     
+        <footer>
+            <div>
+                에이콘아카데미 <br>
+                COPYRIGHT 2022. ALL RIGHT RESERVED.
+            </div>
+        </footer>
+    </div>
+</body>
 </html>
