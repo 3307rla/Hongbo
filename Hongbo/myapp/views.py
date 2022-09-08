@@ -2,10 +2,15 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def mainFunc(request):
+def main(request):
 
     return render(request, 'main.html')
 
-def index(request):
+def hmap(request):
 
-  return render(request, "index.html")
+    return render(request, "hmap.html")
+
+def statistics(request):
+
+    return render(request, "statistics.html")
+
