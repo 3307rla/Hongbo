@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'hong',
         'USER': 'hong',
         'PASSWORD': 'hong1234',
-        'HOST': 'hong.cslxlkthdmym.ap-northeast-2.rds.amazonaws.com',
+        'HOST': 'hong.cpey9hzqgzrj.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
         'charset':'utf8',
         'use_unicode':True
