@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp import views
+from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('statistics', views.statistics),
     path('statisticsFunc', views.statisticsFunc),
     
+    path('board/', include('myapp.urls')),
 ]
