@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HongBo with NolBo</title>
+<link
+	href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Stylish&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap"
+	rel="stylesheet">
+<link href="{%static 'css/styles.css' %}" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link href="{%static 'css/board.css' %}" rel="stylesheet" />
+<link href="{%static 'css/form.css' %}" rel="stylesheet" />
+</head>
+<body>
+	<div class="header" id="link_header">
+		<nav class="navbar">
+			<ul class="navbar_menu">
+				<li><a href="/main">HOME</a></li>
+				<li><a href="/hmap">H_MAP</a></li>
+				<li><a href="/statistics">통계서비스</a></li>
+				<li><a href="/board">홍보게시판</a></li>
+			</ul>
+		</nav>
+	</div>
+	<br />
+	<br />
+	<br />
+	<form action="/board/replyok" method="post" name="refrm">{% csrf_token %}
+	<input type="hidden" name="id" value="{{data_one.id}}">
+	<input type="hidden" name="gnum" value="{{data_one.gnum}}">
+	<input type="hidden" name="onum" value="{{data_one.onum}}">
+	<input type="hidden" name="nested" value="{{data_one.nested}}">	
+
+		<table class="table" style="width: 95%">
+			<h2>댓글 쓰기</h2>
+			<br /><br />
+			<tr>
+				<td>작성자</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td><input type="text" name="mail"></td>
+			</tr>
+			<tr>
+				<td>글제목</td>
+				<td><input type="text" style="width: 99%" name="title"
+					value="[RE]{{data_one.title}}"></td>
+			</tr>
+			<tr>
+				<td>글내용</td>
+				<td><textarea rows="6" style="width: 99%" name="cont"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align: right;">
+					<input type="button" value="등  록" id="btnReplyOk" class="btn-success"> 
+					<input type="button" value="이  전" id="btnBack" onclick="history.back()"
+					class="btn-danger">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<!-- footer -->
+	<div class="footer">
+		AcornAcademy <br> COPYRIGHT 2022. ALL RIGHT RESERVED.
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			document.getElementById("btnReplyOk").onclick = chkFunc;
+		}
+		function chkFunc() {
+			if (refrm.name.value === "") {
+				alert("작성자를 입력해주세요.");
+				refrm.namte.focus();
+				return;
+			} else if (refrm.mail.value === "") {
+				alert("이메일을 입력해주세요.");
+				refrm.namte.focus();
+				return;
+			} else if (refrm.title.value === "") {
+				alert("제목을 입력해주세요.");
+				refrm.namte.focus();
+				return;
+			} else if (refrm.cont.value === "") {
+				alert("내용을 입력해주세요.");
+				refrm.namte.focus();
+				return;
+			}
+
+			refrm.method = "post"
+			refrm.submit();
+		}
+	</script>
+</body>
+</html>

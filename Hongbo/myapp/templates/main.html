@@ -61,51 +61,159 @@
             </li>     
         </ul> -->
         <!-- amount end -->
-        <div class="main_text0" id="link_main_text0">
+        <div class="text-center" style="margin-top : 10px">
             <h1>업체 선정</h1>
             <br />
-            <div class="contents1">
+            <div class="contents1 text-center">
                H_MAP 이 추천하는 업체에 맡겨보세요
-             <ul class="icons">
-                <li>
-                    <div class="icon_img">
-                        <img src="/static/img/icon0.png" >
+              <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+             <div class="carousel-indicators" style="margin-bottom : 5px">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+             </div>
+             <div class="container">
+                <div class="carousel-inner">
+                
+                   <div class="carousel-item active" data-bs-interval="10000">
+                      <div class="row">
+                          
+                         <div class="col">
+                             <div class="icon_img">
+                                    <img src="/static/img/icon0.png" >
+                                </div>
+                                <div class="contents1_bold">{{dict.dict0.이름}}</div>
+                                <div class="contents2">
+                                    {{dict.dict0.주소}}
+                                </div>
+                                <div class="more">
+                                    <a href="{{dict.dict0.사이트}}">MORE</a>
+                                </div>
+                         </div>
+                         
+                         <div class="col">
+                           <div class="icon_img">
+                                    <img src="/static/img/icon1.png" >
+                                </div>
+                                <div class="contents1_bold">{{dict.dict1.이름}}</div>
+                                <div class="contents2">
+                                    {{dict.dict1.주소}}
+                                </div>
+                                <div class="more">
+                                    <a href="{{dict.dict1.사이트}}">MORE</a>
+                                </div>
+                         </div>
+                         <div class="col">
+                           <div class="icon_img">
+                                    <img src="/static/img/icon3.png" >
+                                </div>
+                                <div class="contents1_bold">{{dict.dict2.이름}}</div>
+                                <div class="contents2">
+                                    {{dict.dict2.주소}}
+                                </div>
+                                <div class="more">
+                                    <a href="{{dict.dict2.사이트}}">MORE</a>
+                                </div>
+                         </div>
+                     </div>  
+                   </div>
+                   
+                   <div class="carousel-item" data-bs-interval="2000">
+                     <div class="row">
+                      <div class="col">
+                        <div class="icon_img">
+                                 <img src="/static/img/icon0.png" >
+                             </div>
+                             <div class="contents1_bold">{{dict.dict3.이름}}</div>
+                             <div class="contents2">
+                                 {{dict.dict3.주소}}
+                             </div>
+                             <div class="more">
+                                 <a href="{{dict.dict3.사이트}}">MORE</a>
+                             </div>
+                      </div>
+                      <div class="col">
+                        <div class="icon_img">
+                                 <img src="/static/img/icon1.png" >
+                             </div>
+                             <div class="contents1_bold">{{dict.dict4.이름}}</div>
+                             <div class="contents2">
+                                 {{dict.dict4.주소}}
+                             </div>
+                             <div class="more">
+                                 <a href="{{dict.dict4.사이트}}">MORE</a>
+                             </div>
+                      </div>
+                      <div class="col">
+                        <div class="icon_img">
+                                 <img src="/static/img/icon3.png" >
+                             </div>
+                             <div class="contents1_bold">{{dict.dict5.이름}}</div>
+                             <div class="contents2">
+                                 {{dict.dict5.주소}}
+                             </div>
+                             <div class="more">
+                                 <a href="{{dict.dict5.사이트}}">MORE</a>
+                             </div>
+                      </div>
                     </div>
-                    <div class="contents1_bold">판촉사이트1</div>
-                    <div class="contents2">
-                        사이트 설명 간단하게 적기
+                   </div>
+                   
+                   <div class="carousel-item">
+                     <div class="row">
+                      <div class="col">
+                        <div class="icon_img">
+                                 <img src="/static/img/icon0.png" >
+                             </div>
+                             <div class="contents1_bold">{{dict.dict6.이름}}</div>
+                             <div class="contents2">
+                                 {{dict.dict6.주소}}
+                             </div>
+                             <div class="more">
+                                 <a href="{{dict.dict6.사이트}}">MORE</a>
+                             </div>
+                      </div>
+                      <div class="col">
+                        <div class="icon_img">
+                                 <img src="/static/img/icon1.png" >
+                             </div>
+                             <div class="contents1_bold">{{dict.dict7.이름}}</div>
+                             <div class="contents2">
+                                 {{dict.dict7.주소}}
+                             </div>
+                             <div class="more">
+                                 <a href="{{dict.dict7.사이트}}">MORE</a>
+                             </div>
+                      </div>
+                      <div class="col">
+                        <div class="icon_img">
+                                 <img src="/static/img/icon3.png" >
+                             </div>
+                             <div class="contents1_bold">{{dict.dict8.이름}}</div>
+                             <div class="contents2">
+                                 {{dict.dict8.주소}}
+                             </div>
+                             <div class="more">
+                                 <a href="{{dict.dict8.사이트}}">MORE</a>
+                             </div>
+                      </div>
                     </div>
-                    <div class="more">
-                        MORE
-                    </div>
-                </li>
-                <li>
-                    <div class="icon_img">
-                        <img src="/static/img/icon1.png" >
-                    </div>
-                    <div class="contents1_bold">판촉사이트2</div>
-                    <div class="contents2">
-                        사이트 설명 간단하게 적기
-                    </div>
-                    <div class="more">
-                        MORE
-                    </div>
-                </li>
-                <li>
-                    <div class="icon_img">
-                        <img src="/static/img/icon3.png" >
-                    </div>
-                    <div class="contents1_bold">판촉사이트3</div>
-                    <div class="contents2">
-                        사이트 설명 간단하게 적기
-                    </div>
-                    <div class="more">
-                        MORE
-                    </div>
-                </li>
-             </ul>  
+                   </div>
+               </div>
+                 
+             </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+             </button>
+             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+             </button> 
             </div>
         </div>
+        <hr>
         <div class="main_text1" id="link_main_text1">
             <h1>H_MAP를 소개합니다</h1>
             <br>
