@@ -28,16 +28,17 @@
 <link href="{%static 'css/form.css' %}"  rel="stylesheet"/>
 </head>
 <body>
-	<div class="header" id="link_header">
-		<nav class="navbar">
-			<ul class="navbar_menu">
-				<li><a href="/main">HOME</a></li>
-				<li><a href="/hmap">H_MAP</a></li>
-				<li><a href="/statistics">통계서비스</a></li>
-				<li><a href="/board">홍보게시판</a></li>
-			</ul>
-		</nav>
-	</div>
+	<div class="header" id="link_header">  
+            <nav class="navbar">             
+                <ul class="navbar_menu">
+                    <li><a href="#link_header">HOME</a></li>
+                    <li><a href="/hmap">H_MAP</a></li>
+                    <li><a href="/statistics">통계서비스</a></li>
+                    <li><a href="/board">홍보게시판</a></li>
+                    <li><a href="#intro">이용방법</a></li>
+                </ul>
+            </nav>
+     </div>
 	<br /><br /><br />
 	<form action="/board/updateok" method="post" name="upfrm">{% csrf_token %}
 		<!-- 수정할 번호도 함께 전송 -->
@@ -75,11 +76,7 @@
 		</table>
 	</form>
 	
-	<!-- footer --> 
-  	<div class="footer">
-       AcornAcademy <br>
-       COPYRIGHT 2022. ALL RIGHT RESERVED.
-   	</div>
+	
 
 	<script type="text/javascript">
 		window.onload = function() {
