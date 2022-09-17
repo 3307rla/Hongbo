@@ -24,8 +24,8 @@
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
-<link href="{%static 'css/board.css' %}"  rel="stylesheet"/>	
-<link href="{%static 'css/form.css' %}"  rel="stylesheet"/>
+<link href="{%static 'css/board.css' %}" rel="stylesheet" />
+<link href="{%static 'css/form.css' %}" rel="stylesheet" />
 </head>
 <body>
 	<div class="header" id="link_header">
@@ -38,60 +38,76 @@
 			</ul>
 		</nav>
 	</div>
-	<br /><br /><br />
-	<form action="/board/updateok" method="post" name="upfrm">{% csrf_token %}
-		<!-- 수정할 번호도 함께 전송 -->
-		<input type="hidden" name="id" value="{{data_one.id}}">
+	<br />
+	<br />
+	<br />
+	<form action="/board/replyok" method="post" name="refrm">{% csrf_token %}
+	<input type="hidden" name="id" value="{{data_one.id}}">
+	<input type="hidden" name="gnum" value="{{data_one.gnum}}">
+	<input type="hidden" name="onum" value="{{data_one.onum}}">
+	<input type="hidden" name="nested" value="{{data_one.nested}}">	
+
 		<table class="table" style="width: 95%">
-			<h2>게시글 수정</h2>
+			<h2>댓글 쓰기</h2>
 			<br /><br />
 			<tr>
 				<td>작성자</td>
-				<td><input type="text" name="name" value="{{data_one.name}}">
-				</td>
+				<td><input type="text" name="name"></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="text" name="mail" value="{{data_one.mail}}">
-				</td>
+				<td><input type="text" name="mail"></td>
 			</tr>
 			<tr>
 				<td>글제목</td>
 				<td><input type="text" style="width: 99%" name="title"
-					value="{{data_one.title}}"></td>
+					value="[RE]{{data_one.title}}"></td>
 			</tr>
 			<tr>
 				<td>글내용</td>
-				<td><textarea rows="6" style="width: 99%" name="cont">{{data_one.cont}}</textarea>
+				<td><textarea rows="6" style="width: 99%" name="cont"></textarea>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: right;">
-					<input type="button" value="수  정" id="btnUpdate" class="btn-success"> 
+					<input type="button" value="등  록" id="btnReplyOk" class="btn-success"> 
 					<input type="button" value="이  전" id="btnBack" onclick="history.back()"
 					class="btn-danger">
 				</td>
 			</tr>
 		</table>
 	</form>
-	
-	<!-- footer --> 
-  	<div class="footer">
-       AcornAcademy <br>
-       COPYRIGHT 2022. ALL RIGHT RESERVED.
-   	</div>
+
+	<!-- footer -->
+	<div class="footer">
+		AcornAcademy <br> COPYRIGHT 2022. ALL RIGHT RESERVED.
+	</div>
 
 	<script type="text/javascript">
 		window.onload = function() {
-			document.querySelector("#btnUpdate").onclick = function() {
-				if (upfrm.name.value === "") {
-					alert("작성자를 입력해주세요.");
-					upfrm.namte.focus();
-					return;
-				}
-
-				upfrm.submit();
+			document.getElementById("btnReplyOk").onclick = chkFunc;
+		}
+		function chkFunc() {
+			if (refrm.name.value === "") {
+				alert("작성자를 입력해주세요.");
+				refrm.namte.focus();
+				return;
+			} else if (refrm.mail.value === "") {
+				alert("이메일을 입력해주세요.");
+				refrm.namte.focus();
+				return;
+			} else if (refrm.title.value === "") {
+				alert("제목을 입력해주세요.");
+				refrm.namte.focus();
+				return;
+			} else if (refrm.cont.value === "") {
+				alert("내용을 입력해주세요.");
+				refrm.namte.focus();
+				return;
 			}
+
+			refrm.method = "post"
+			refrm.submit();
 		}
 	</script>
 </body>
