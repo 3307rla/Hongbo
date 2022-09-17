@@ -49,7 +49,7 @@ def mapFunc(request):
     return render(request, "hmap.html", {'x':x, 'y':y})
         
 def statistics(request):
-    df = pd.read_csv('hongbo/myapp/static/csv/ingu.csv', encoding='cp949')
+    df = pd.read_csv('https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/ingu.csv', encoding='cp949')
     
     Q = []
 
