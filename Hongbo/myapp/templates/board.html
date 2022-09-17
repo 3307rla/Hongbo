@@ -42,9 +42,9 @@
 	<br />
 	<br />
 	
-	<div class="insertbox">
-	<a class="insertbtn" href="#">추가</a>
-	</div>
+	<div class="p-2 bd-highlight">
+      <a href="/insert" class="btn btn-info rounded-pill"><i class="bi bi-plus"></i>추가</a>
+    </div>
 	
 	<!-- 게시판 테이블 부분 -->
 	
@@ -75,8 +75,9 @@
 		<td>{{d.readcnt}}</td>
 	</tr>
 	
-	{% endfor %}
-	<!-- 페이징 처리 -->
+	
+	<!-- {% endfor %}
+	페이징 처리
 	<tr>
 		<td colspan="5" style="text-align: center;">
 		<div>
@@ -94,12 +95,13 @@
 	{% else %}
 	<tr>	
 		<td colspan="5">
-		 	글 내용이 존재 하지않습니다.
+		 	게시글이 없습니다.
 		</td>
 	</tr>
-	{% endif %}
+	{% endif %} -->
+	
 	<!-- 검색 -->
-	<tr>
+	<!-- <tr>
 	   <td colspan="6" style="text-align: center;">
            <form action="/board/search" method="post">{%csrf_token%}
 	           <select name="s_type">
@@ -110,13 +112,44 @@
 	           <input type="submit" value="검색">
            </form>
 	   </td>
-	</tr>
+	</tr> -->
 </table>
+		<!-- 검색 부분(수정) -->
+		<div class="search-box mb-3" style="width:20;">
+            <input id="inputSearch" type="text" class="form-control kw" placeholder="검색어를 입력하세요."
+                   value="{{ kw|default_if_none:'' }}">
+        </div>
 	
+		 <!-- 페이징처리 시작 -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center user-select-none">
+            <!-- 이전페이지 -->
+            <li class="page-item">
+                    <a class="page-link" type="button" href="javascript:;" onclick="">&laquo;</a>
+                </li>
+            <li class="page-item">
+                    <a class="page-link" type="button" href="javascript:;" onclick="">&lsaquo;</a>
+            </li>
+            
+            <!-- 페이지 리스트 -->
+            <li class="page-item active" aria-current="page">
+                    <a class="page-link" type="button">{{ page_number }}</a>
+             </li>
+             
+            <!-- 다음페이지 -->
+            <li class="page-item">
+                    <a class="page-link" type="button" href="javascript:;" onclick="clickPage">&rsaquo;</a>
+            </li>
+                <li class="page-item">
+                    <a class="page-link" type="button" href="javascript:;" onclick="clickPage">&raquo;</a>
+                </li>            
+           </ul>
+        </nav>
+        	
 	<!-- footer --> 
-            <div class="footer">
-                AcornAcademy <br>
-                COPYRIGHT 2022. ALL RIGHT RESERVED.
-            </div>
+     <div class="footer">
+         AcornAcademy <br>
+         COPYRIGHT 2022. ALL RIGHT RESERVED.
+     </div>
 </body>
 </html>
