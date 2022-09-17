@@ -4,7 +4,7 @@ import random
 # Create your views here.
 
 def main(request):
-    data = pd.read_excel("Hongbo/myapp/static/csv/판촉물업체.xlsx")
+    data = pd.read_csv("Hongbo/myapp/static/csv/판촉물업체.csv")
     ndata = data[['LABEL-1', 'LABEL-3', 'site']]
     ndata.columns = ['이름', '주소', '사이트']
     # print(ndata.iloc[[0,1,3,5]])
