@@ -26,7 +26,9 @@ urlpatterns = [
     path('main', views.main),
     
     path('hmap', views.hmap),
+    path('mapFunc', views.mapFunc),
     path('statistics', views.statistics),
+    path('statisticsFunc', views.statisticsFunc),
     
     path('board/', include('myapp.urls')),
 ]
