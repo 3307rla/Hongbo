@@ -5,8 +5,18 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from myapp.models import BoardTab
 
 def board(request):
+    data_all = BoardTab.objects.all().order_by('-gnum', 'onum')  # 댓글 처리를 할 경우
+    per_page = 10
+    paginator = Paginator(data_all, per_page)
+    page = request.GET.get('page')
+    try:
+        datas = paginator.page(page)
+    except PageNotAnInteger:
+        datas = paginator.page(1)
+    except EmptyPage:
+        datas = paginator.page(paginator.num_pages)  
     
-    return render(request, 'board.html')
+    return render(request, 'board.html', {'datas':datas})   
 
 def insert(request):
     return render(request, 'insert.html')
