@@ -10,7 +10,7 @@ def main(request):
     data = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/%ED%8C%90%EC%B4%89%EB%AC%BC%EC%97%85%EC%B2%B4.csv", encoding='euc-kr')
     ndata = data[['LABEL-1', 'LABEL-3', 'site']]
     ndata.columns = ['이름', '주소', '사이트']
-    
+    # print(ndata.iloc[[0,1,3,5]])
     li = []
     for i in range(9):
         num = random.randint(0, 52)
