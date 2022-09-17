@@ -2,16 +2,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HongBo with NolBo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital@0;1&display=swap" rel="stylesheet">
-    <link href="{%static 'css/styles.css' %}" rel="stylesheet" />
-
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HongBo with NolBo</title>
+<link
+	href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital@0;1&display=swap"
+	rel="stylesheet">
+<link href="{%static 'css/styles.css' %}" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
+<style>
+select {
+	text-align-last: center;
+}
+
+.highcharts-figure, .highcharts-data-table table {
+	min-width: 1300px;
+	max-width: 1000px;
+	margin: 2em auto;
+}
+
+.highcharts-data-table table {
+	font-family: Verdana, sans-serif;
+	border-collapse: collapse;
+	border: 1px solid #ebebeb;
+	margin: 10px auto;
+	text-align: center;
+	width: 100%;
+	max-width: 500px;
+}
+
+.highcharts-data-table caption {
+	padding: 1em 0;
+	font-size: 1.2em;
+	color: #555;
+}
+
+.highcharts-data-table th {
+	font-weight: 600;
+	padding: 0.5em;
+}
+
+.highcharts-data-table td, .highcharts-data-table th,
+	.highcharts-data-table caption {
+	padding: 0.5em;
+}
+
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even)
+	{
+	background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+	background: #f1f7ff;
+}
+</style>
 <body>
-   <div class="header" id="link_header">
+	<div class="header" id="link_header">
 		<nav class="navbar">
 			<ul class="navbar_menu">
 				<li><a href="/main">HOME</a></li>
@@ -21,13 +71,751 @@
 			</ul>
 		</nav>
 	</div>
-                <div class="intro_text">
-                    <!-- <h1>홍보와 놀보</h1> -->
-                    <br>
-                    <br>
-                    <!-- <h4 class="contents">CREATE BY 3조</h4> -->
-                </div>  
-        </div>
+	<div class="intro_text">
+		<!-- 셀렉트 박스 -->
+		<form method="post" name="select">
+			<div class="container">
+				<div class="row">
+					<div class="col-2">
+						<select class="form-select" id="gu" name="gu"
+							onchange="loaddong();">
+						</select>
+					</div>
+					<div class="col-2">
+						<select class="form-select" id="dong" name="dong"
+							onchange="handleOnChange(this);">
+							<option>동</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</form>
+		<br />
+		<!-- 그래프 부분 -->
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/series-label.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+		<figure class="highcharts-figure">
+			<div id="container"></div>
+		</figure>
 	</div>
+
+<script type="text/javascript">
+//그래프 설정
+Highcharts.chart('container', {
+
+    title: {
+        text: ' '
+    },
+
+    yAxis: {
+        title: {
+            text: ' '
+        }
+    },
+
+    xAxis: {
+        categories: ['2월', '3월', '4월', '5월', '6월', '7월']
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+        }
+    },
+
+    series: [{
+        name: '인구수',
+        data: [0,0,0,0,0,0]
+    	
+	}],
+    
+});		
+
+
+// 셀렉트 이벤트	
+function handleOnChange(h) {
+	  // 선택된 데이터 가져오기
+	  const value = h.value;
+	  
+	  // 데이터 출력
+	  document.getElementById('container').innerText
+		= value
+		}
+		
+// 셀렉트 박스 	
+let gu = [
+	{v:"0",t:"구"},
+	{v:"1",t:"강남구"},
+	{v:"2",t:"강동구"},
+	{v:"3",t:"강북구"},
+	{v:"4",t:"강서구"},	
+	{v:"5",t:"관악구"},
+	{v:"6",t:"광진구"},
+	{v:"7",t:"구로구"},
+	{v:"8",t:"금천구"},	
+	{v:"9",t:"노원구"},
+	{v:"10",t:"도봉구"},
+	{v:"11",t:"동대문구"},
+	{v:"12",t:"동작구"},	
+	{v:"13",t:"마포구"},
+	{v:"14",t:"서대문구"},
+	{v:"15",t:"서초구"},
+	{v:"16",t:"성동구"},	
+	{v:"17",t:"성북구"},	
+	{v:"18",t:"송파구"},
+	{v:"19",t:"양천구"},
+	{v:"20",t:"영등포구"},
+	{v:"21",t:"용산구"},	
+	{v:"22",t:"은평구"},
+	{v:"23",t:"종로구"},
+	{v:"24",t:"중구"},
+	{v:"25",t:"중랑구"},	
+];
+
+let dong1 = [
+	{v:"0",t:"동"},
+	{v:"{{d.0.graph}}",t:"개포1동"},
+	{v:"{{d.1.graph}}",t:"개포2동"},
+	{v:"{{d.2.graph}}",t:"개포4동"},
+	{v:"{{d.3.graph}}",t:"논현1동"},
+	{v:"{{d.4.graph}}",t:"논현2동"},
+	{v:"{{d.5.graph}}",t:"대치1동"},
+	{v:"{{d.6.graph}}",t:"대치2동"},
+	{v:"{{d.7.graph}}",t:"대치4동"},
+	{v:"{{d.8.graph}}",t:"도곡1동"},
+	{v:"{{d.9.graph}}",t:"도곡2동"},
+	{v:"{{d.10.graph}}",t:"삼성1동"},
+	{v:"{{d.11.graph}}",t:"삼성2동"},
+	{v:"{{d.12.graph}}",t:"세곡동"},
+	{v:"{{d.13.graph}}",t:"수서동"},
+	{v:"{{d.14.graph}}",t:"신사동"},
+	{v:"{{d.15.graph}}",t:"압구정동"},
+	{v:"{{d.16.graph}}",t:"역삼1동"},
+	{v:"{{d.17.graph}}",t:"역삼2동"},
+	{v:"{{d.18.graph}}",t:"일원1동"},
+	{v:"{{d.19.graph}}",t:"일원2동"},
+	{v:"{{d.20.graph}}",t:"일원본동"},
+	{v:"{{d.21.graph}}",t:"청담동"}
+];
+
+let dong2 = [
+	{v:"0",t:"동"},
+	{v:"{{d.22.graph}}",t:"강일동"},
+	{v:"{{d.23.graph}}",t:"고덕제1동"},
+	{v:"{{d.24.graph}}",t:"고덕제2동"},
+	{v:"{{d.25.graph}}",t:"길동"},
+	{v:"{{d.26.graph}}",t:"둔촌제1동"},
+	{v:"{{d.27.graph}}",t:"둔촌제2동"},
+	{v:"{{d.28.graph}}",t:"명일제1동"},
+	{v:"{{d.29.graph}}",t:"명일제2동"},
+	{v:"{{d.30.graph}}",t:"상일동"},
+	{v:"{{d.31.graph}}",t:"성내제1동"},
+	{v:"{{d.32.graph}}",t:"성내제2동"},
+	{v:"{{d.33.graph}}",t:"성내제3동"},
+	{v:"{{d.34.graph}}",t:"암사제1동"},
+	{v:"{{d.35.graph}}",t:"암사제2동"},
+	{v:"{{d.36.graph}}",t:"암사제3동"},
+	{v:"{{d.37.graph}}",t:"천호제1동"},
+	{v:"{{d.38.graph}}",t:"천호제2동"},
+	{v:"{{d.39.graph}}",t:"천호제3동"}
+];
+
+let dong3 = [
+	{v:"0",t:"동"},
+	{v:"{{d.40.graph}}",t:"미아동"},
+	{v:"{{d.41.graph}}",t:"삼각산동"},
+	{v:"{{d.42.graph}}",t:"삼양동"},
+	{v:"{{d.43.graph}}",t:"송중동"},
+	{v:"{{d.44.graph}}",t:"송천동"},
+	{v:"{{d.45.graph}}",t:"우이동"},
+	{v:"{{d.46.graph}}",t:"인수동"}
+];
+	
+let dong4 = [
+	{v:"0",t:"동"},
+	{v:"{{d.47.graph}}",t:"가양제1동"},
+	{v:"{{d.48.graph}}",t:"가양제2동"},
+	{v:"{{d.49.graph}}",t:"가양제3동"},
+	{v:"{{d.50.graph}}",t:"공항동"},
+	{v:"{{d.51.graph}}",t:"등촌제1동"},
+	{v:"{{d.52.graph}}",t:"등촌제2동"},
+	{v:"{{d.53.graph}}",t:"등촌제3동"},
+	{v:"{{d.54.graph}}",t:"발산제1동"},
+	{v:"{{d.55.graph}}",t:"방화제1동"},
+	{v:"{{d.56.graph}}",t:"방화제2동"},
+	{v:"{{d.57.graph}}",t:"방화제3동"},
+	{v:"{{d.58.graph}}",t:"염창동"},
+	{v:"{{d.59.graph}}",t:"우장산동"},
+	{v:"{{d.60.graph}}",t:"화곡본동"},
+	{v:"{{d.61.graph}}",t:"화곡제1동"},
+	{v:"{{d.62.graph}}",t:"화곡제2동"},
+	{v:"{{d.63.graph}}",t:"화곡제3동"},
+	{v:"{{d.64.graph}}",t:"화곡제4동"},
+	{v:"{{d.65.graph}}",t:"화곡제6동"},
+	{v:"{{d.66.graph}}",t:"화곡제8동"}
+];
+
+let dong5 = [
+	{v:"0",t:"동"},
+	{v:"{{d.67.graph}}",t:"낙성대동"},
+	{v:"{{d.68.graph}}",t:"난곡동"},
+	{v:"{{d.69.graph}}",t:"난향동"},
+	{v:"{{d.70.graph}}",t:"남현동"},
+	{v:"{{d.71.graph}}",t:"대학동"},
+	{v:"{{d.72.graph}}",t:"미성동"},
+	{v:"{{d.73.graph}}",t:"보라매동"},
+	{v:"{{d.74.graph}}",t:"삼성동"},
+	{v:"{{d.75.graph}}",t:"서림동"},
+	{v:"{{d.76.graph}}",t:"서원동"},
+	{v:"{{d.77.graph}}",t:"성현동"},
+	{v:"{{d.78.graph}}",t:"신림동"},
+	{v:"{{d.79.graph}}",t:"신사동"},
+	{v:"{{d.80.graph}}",t:"신원동"},
+	{v:"{{d.81.graph}}",t:"은천동"},
+	{v:"{{d.82.graph}}",t:"인헌동"},
+	{v:"{{d.83.graph}}",t:"조원동"},
+	{v:"{{d.84.graph}}",t:"중앙동"},
+	{v:"{{d.85.graph}}",t:"청룡동"},
+	{v:"{{d.86.graph}}",t:"청림동"},
+	{v:"{{d.87.graph}}",t:"행운동"}
+];
+
+let dong6 = [
+	{v:"0",t:"동"},
+	{v:"{{d.88.graph}}",t:"광장동"},
+	{v:"{{d.89.graph}}",t:"구의제1동"},
+	{v:"{{d.90.graph}}",t:"구의제2동"},
+	{v:"{{d.91.graph}}",t:"구의제3동"},
+	{v:"{{d.92.graph}}",t:"군자동"},
+	{v:"{{d.93.graph}}",t:"능동"},
+	{v:"{{d.94.graph}}",t:"자양제1동"},
+	{v:"{{d.95.graph}}",t:"자양제2동"},
+	{v:"{{d.96.graph}}",t:"자양제3동"},
+	{v:"{{d.97.graph}}",t:"자양제4동"},
+	{v:"{{d.98.graph}}",t:"중곡제1동"},
+	{v:"{{d.99.graph}}",t:"중곡제2동"},
+	{v:"{{d.100.graph}}",t:"중곡제3동"},
+	{v:"{{d.101.graph}}",t:"중곡제4동"},
+	{v:"{{d.102.graph}}",t:"화양동"}
+];
+
+let dong7 = [
+	{v:"0",t:"동"},
+	{v:'{{d.103.graph}}"',t:"가리봉동"},
+	{v:"{{d.104.graph}}",t:"개봉제1동"},
+	{v:"{{d.105.graph}}",t:"개봉제2동"},
+	{v:"{{d.106.graph}}",t:"개봉제3동"},
+	{v:"{{d.107.graph}}",t:"고척제1동"},
+	{v:"{{d.108.graph}}",t:"고척제2동"},
+	{v:"{{d.109.graph}}",t:"구로제1동"},
+	{v:"{{d.110.graph}}",t:"구로제2동"},
+	{v:"{{d.111.graph}}",t:"구로제3동"},
+	{v:"{{d.112.graph}}",t:"구로제4동"},
+	{v:"{{d.113.graph}}",t:"구로제5동"},
+	{v:"{{d.114.graph}}",t:"수궁동"},
+	{v:"{{d.115.graph}}",t:"신도림동"},
+	{v:"{{d.116.graph}}",t:"오류제1동"},
+	{v:"{{d.117.graph}}",t:"오류제2동"}
+];
+
+let dong8 = [
+	{v:"0",t:"동"},
+	{v:"{{d.118.graph}}",t:"가산동"},
+	{v:"{{d.119.graph}}",t:"독산제1동"},
+	{v:"{{d.120.graph}}",t:"독산제2동"},
+	{v:"{{d.121.graph}}",t:"독산제3동"},
+	{v:"{{d.122.graph}}",t:"독산제4동"},
+	{v:"{{d.123.graph}}",t:"시흥제1동"},
+	{v:"{{d.124.graph}}",t:"시흥제2동"},
+	{v:"{{d.125.graph}}",t:"시흥제3동"},
+	{v:"{{d.126.graph}}",t:"시흥제4동"},
+	{v:"{{d.127.graph}}",t:"시흥제5동"}
+];
+
+let dong9 = [
+	{v:"0",t:"동"},
+	{v:"{{d.128.graph}}",t:"공릉1동"},
+	{v:"{{d.129.graph}}",t:"공릉2동"},
+	{v:"{{d.130.graph}}",t:"상계10동"},
+	{v:"{{d.131.graph}}",t:"상계1동"},
+	{v:"{{d.132.graph}}",t:"상계2동"},
+	{v:"{{d.133.graph}}",t:"상계3,4동"},
+	{v:"{{d.134.graph}}",t:"상계5동"},
+	{v:"{{d.135.graph}}",t:"상계6,7동"},
+	{v:"{{d.136.graph}}",t:"상계8동"},
+	{v:"{{d.137.graph}}",t:"상계9동"},
+	{v:"{{d.138.graph}}",t:"월계1동"},
+	{v:"{{d.139.graph}}",t:"월계2동"},
+	{v:"{{d.140.graph}}",t:"월계3동"},
+	{v:"{{d.141.graph}}",t:"중계1동"},
+	{v:"{{d.142.graph}}",t:"중계2,3동"},
+	{v:"{{d.143.graph}}",t:"중계4동"},
+	{v:"{{d.144.graph}}",t:"중계본동"},
+	{v:"{{d.145.graph}}",t:"하계1동"},
+	{v:"{{d.146.graph}}",t:"하계2동"}
+];
+
+let dong10 = [
+	{v:"0",t:"동"},
+	{v:"{{d.147.graph}}",t:"도봉제1동"},
+	{v:"{{d.148.graph}}",t:"도봉제2동"},
+	{v:"{{d.149.graph}}",t:"방학제1동"},
+	{v:"{{d.150.graph}}",t:"방학제2동"},
+	{v:"{{d.151.graph}}",t:"방학제3동"},
+	{v:"{{d.152.graph}}",t:"쌍문제1동"},
+	{v:"{{d.153.graph}}",t:"쌍문제2동"},
+	{v:"{{d.154.graph}}",t:"쌍문제3동"},
+	{v:"{{d.155.graph}}",t:"쌍문제4동"},
+	{v:"{{d.156.graph}}",t:"창제1동"},
+	{v:"{{d.157.graph}}",t:"창제2동"},
+	{v:"{{d.158.graph}}",t:"창제3동"},
+	{v:"{{d.159.graph}}",t:"창제4동"},
+	{v:"{{d.160.graph}}",t:"창제5동"}
+];
+
+let dong11 = [
+	{v:"0",t:"동"},
+	{v:"{{d.161.graph}}",t:"답십리제1동"},
+	{v:"{{d.162.graph}}",t:"답십리제2동"},
+	{v:"{{d.163.graph}}",t:"용신동"},
+	{v:"{{d.164.graph}}",t:"이문제1동"},
+	{v:"{{d.165.graph}}",t:"이문제2동"},
+	{v:"{{d.166.graph}}",t:"장안제1동"},
+	{v:"{{d.167.graph}}",t:"장안제2동"},
+	{v:"{{d.168.graph}}",t:"전농제1동"},
+	{v:"{{d.169.graph}}",t:"전농제2동"},
+	{v:"{{d.170.graph}}",t:"제기동"},
+	{v:"{{d.171.graph}}",t:"청량리동"},
+	{v:"{{d.172.graph}}",t:"회기동"},
+	{v:"{{d.173.graph}}",t:"휘경제1동"},
+	{v:"{{d.174.graph}}",t:"휘경제2동"}
+];
+
+let dong12 = [
+	{v:"0",t:"동"},
+	{v:"{{d.175.graph}}",t:"노량진제1동"},
+	{v:"{{d.176.graph}}",t:"노량진제2동"},
+	{v:"{{d.177.graph}}",t:"대방동"},
+	{v:"{{d.178.graph}}",t:"사당제1동"},
+	{v:"{{d.179.graph}}",t:"사당제2동"},
+	{v:"{{d.180.graph}}",t:"사당제3동"},
+	{v:"{{d.181.graph}}",t:"사당제4동"},
+	{v:"{{d.182.graph}}",t:"사당제5동"},
+	{v:"{{d.183.graph}}",t:"상도제1동"},
+	{v:"{{d.184.graph}}",t:"상도제2동"},
+	{v:"{{d.185.graph}}",t:"상도제3동"},
+	{v:"{{d.186.graph}}",t:"상도제4동"},
+	{v:"{{d.187.graph}}",t:"신대방제1동"},
+	{v:"{{d.188.graph}}",t:"신대방제2동"},
+	{v:"{{d.189.graph}}",t:"흑석동"}
+];
+	
+let dong13 = [
+	{v:"0",t:"동"},
+	{v:"{{d.190.graph}}",t:"공덕동"},
+	{v:"{{d.191.graph}}",t:"대흥동"},
+	{v:"{{d.192.graph}}",t:"도화동"},
+	{v:"{{d.193.graph}}",t:"망원제1동"},
+	{v:"{{d.194.graph}}",t:"망원제2동"},
+	{v:"{{d.195.graph}}",t:"상암동"},
+	{v:"{{d.196.graph}}",t:"서강동"},
+	{v:"{{d.197.graph}}",t:"서교동"},
+	{v:"{{d.198.graph}}",t:"성산제1동"},
+	{v:"{{d.199.graph}}",t:"성산제2동"},
+	{v:"{{d.200.graph}}",t:"신수동"},
+	{v:"{{d.201.graph}}",t:"아현동"},
+	{v:"{{d.202.graph}}",t:"연남동"},
+	{v:"{{d.203.graph}}",t:"염리동"},
+	{v:"{{d.204.graph}}",t:"용강동"},
+	{v:"{{d.205.graph}}",t:"합정동"}
+];
+
+let dong14 = [
+	{v:"0",t:"동"},
+	{v:"{{d.206.graph}}",t:"남가좌제1동"},
+	{v:"{{d.207.graph}}",t:"남가좌제2동"},
+	{v:"{{d.208.graph}}",t:"북가좌제1동"},
+	{v:"{{d.209.graph}}",t:"북가좌제2동"},
+	{v:"{{d.210.graph}}",t:"북아현동"},
+	{v:"{{d.211.graph}}",t:"신촌동"},
+	{v:"{{d.212.graph}}",t:"연희동"},
+	{v:"{{d.213.graph}}",t:"천연동"},
+	{v:"{{d.214.graph}}",t:"충현동"},
+	{v:"{{d.215.graph}}",t:"홍은제1동"},
+	{v:"{{d.216.graph}}",t:"홍은제2동"},
+	{v:"{{d.217.graph}}",t:"홍제제1동"},
+	{v:"{{d.218.graph}}",t:"홍제제2동"},
+	{v:"{{d.219.graph}}",t:"홍제제3동"}
+];
+
+let dong15 = [
+	{v:"0",t:"동"},
+	{v:"{{d.220.graph}}",t:"내곡동"},
+	{v:"{{d.221.graph}}",t:"반포1동"},
+	{v:"{{d.222.graph}}",t:"반포2동"},
+	{v:"{{d.223.graph}}",t:"반포3동"},
+	{v:"{{d.224.graph}}",t:"반포4동"},
+	{v:"{{d.225.graph}}",t:"반포본동"},
+	{v:"{{d.226.graph}}",t:"방배1동"},
+	{v:"{{d.227.graph}}",t:"방배2동"},
+	{v:"{{d.228.graph}}",t:"방배3동"},
+	{v:"{{d.229.graph}}",t:"방배4동"},
+	{v:"{{d.230.graph}}",t:"방배본동"},
+	{v:"{{d.231.graph}}",t:"서초1동"},
+	{v:"{{d.232.graph}}",t:"서초2동"},
+	{v:"{{d.233.graph}}",t:"서초3동"},
+	{v:"{{d.234.graph}}",t:"서초4동"},
+	{v:"{{d.235.graph}}",t:"양재1동"},
+	{v:"{{d.236.graph}}",t:"양재2동"},
+	{v:"{{d.237.graph}}",t:"잠원동"}
+];
+
+let dong16 = [
+	{v:"0",t:"동"},
+	{v:"{{d.238.graph}}",t:"금호1가동"},
+	{v:"{{d.239.graph}}",t:"금호2.3가동"},
+	{v:"{{d.240.graph}}",t:"금호4가동"},
+	{v:"{{d.241.graph}}",t:"마장동"},
+	{v:"{{d.242.graph}}",t:"사근동"},
+	{v:"{{d.243.graph}}",t:"성수1가제1동"},
+	{v:"{{d.244.graph}}",t:"성수1가제2동"},
+	{v:"{{d.245.graph}}",t:"성수2가제1동"},
+	{v:"{{d.246.graph}}",t:"성수2가제3동"},
+	{v:"{{d.247.graph}}",t:"송정동"},
+	{v:"{{d.248.graph}}",t:"옥수동"},
+	{v:"{{d.249.graph}}",t:"왕십리도선동"},
+	{v:"{{d.250.graph}}",t:"왕십리제2동"},
+	{v:"{{d.251.graph}}",t:"용답동"},
+	{v:"{{d.252.graph}}",t:"응봉동"},
+	{v:"{{d.253.graph}}",t:"행당제1동"},
+	{v:"{{d.254.graph}}",t:"행당제2동"}
+];
+
+let dong17 = [
+	{v:"0",t:"동"},
+	{v:"{{d.255.graph}}",t:"길음제1동"},
+	{v:"{{d.256.graph}}",t:"길음제2동"},
+	{v:"{{d.257.graph}}",t:"돈암제1동"},
+	{v:"{{d.258.graph}}",t:"돈암제2동"},
+	{v:"{{d.259.graph}}",t:"동선동"},
+	{v:"{{d.260.graph}}",t:"보문동"},
+	{v:"{{d.261.graph}}",t:"삼선동"},
+	{v:"{{d.262.graph}}",t:"석관동"},
+	{v:"{{d.263.graph}}",t:"석북동"},
+	{v:"{{d.264.graph}}",t:"안암동"},
+	{v:"{{d.265.graph}}",t:"월곡제1동"},
+	{v:"{{d.266.graph}}",t:"월곡제2동"},
+	{v:"{{d.267.graph}}",t:"장위제1동"},
+	{v:"{{d.268.graph}}",t:"장위제2동"},
+	{v:"{{d.269.graph}}",t:"장위제3동"},
+	{v:"{{d.270.graph}}",t:"정릉제1동"},
+	{v:"{{d.271.graph}}",t:"정릉제2동"},
+	{v:"{{d.272.graph}}",t:"정릉제3동"},
+	{v:"{{d.273.graph}}",t:"정릉제4동"},
+	{v:"{{d.274.graph}}",t:"종암동"}
+];
+
+let dong18 = [
+	{v:"0",t:"동"},
+	{v:"{{d.275.graph}}",t:"가락1동"},
+	{v:"{{d.276.graph}}",t:"가락2동"},
+	{v:"{{d.277.graph}}",t:"가락본동"},
+	{v:"{{d.278.graph}}",t:"거여1동"},
+	{v:"{{d.279.graph}}",t:"거여2동"},
+	{v:"{{d.280.graph}}",t:"마천1동"},
+	{v:"{{d.281.graph}}",t:"마천2동"},
+	{v:"{{d.282.graph}}",t:"문정1동"},
+	{v:"{{d.283.graph}}",t:"문정2동"},
+	{v:"{{d.284.graph}}",t:"방이1동"},
+	{v:"{{d.285.graph}}",t:"방이2동"},
+	{v:"{{d.286.graph}}",t:"삼전동"},
+	{v:"{{d.287.graph}}",t:"석촌동"},
+	{v:"{{d.288.graph}}",t:"송파1동"},
+	{v:"{{d.289.graph}}",t:"송파2동"},
+	{v:"{{d.290.graph}}",t:"오금동"},
+	{v:"{{d.291.graph}}",t:"오륜동"},
+	{v:"{{d.292.graph}}",t:"위례동"},
+	{v:"{{d.293.graph}}",t:"잠실2동"},
+	{v:"{{d.294.graph}}",t:"잠실3동"},
+	{v:"{{d.295.graph}}",t:"잠실4동"},
+	{v:"{{d.296.graph}}",t:"잠실6동"},
+	{v:"{{d.297.graph}}",t:"잠실7동"},
+	{v:"{{d.298.graph}}",t:"잠실본동"},
+	{v:"{{d.299.graph}}",t:"장지동"},
+	{v:"{{d.300.graph}}",t:"풍납1동"},
+	{v:"{{d.301.graph}}",t:"풍납2동"}
+];
+
+let dong19 = [
+	{v:"0",t:"동"},
+	{v:"{{d.302.graph}}",t:"목1동"},
+	{v:"{{d.303.graph}}",t:"목2동"},
+	{v:"{{d.304.graph}}",t:"목3동"},
+	{v:"{{d.305.graph}}",t:"목4동"},
+	{v:"{{d.306.graph}}",t:"목5동"},
+	{v:"{{d.307.graph}}",t:"신월1동"},
+	{v:"{{d.308.graph}}",t:"신월2동"},
+	{v:"{{d.309.graph}}",t:"신월3동"},
+	{v:"{{d.310.graph}}",t:"신월4동"},
+	{v:"{{d.311.graph}}",t:"신월5동"},
+	{v:"{{d.312.graph}}",t:"신월6동"},
+	{v:"{{d.313.graph}}",t:"신월7동"},
+	{v:"{{d.314.graph}}",t:"신정1동"},
+	{v:"{{d.315.graph}}",t:"신정2동"},
+	{v:"{{d.316.graph}}",t:"신정3동"},
+	{v:"{{d.317.graph}}",t:"신정4동"},
+	{v:"{{d.318.graph}}",t:"신정6동"},
+	{v:"{{d.319.graph}}",t:"신정7동"}
+];
+
+let dong20 = [
+	{v:"0",t:"동"},
+	{v:"{{d.320.graph}}",t:"당산제1동"},
+	{v:"{{d.321.graph}}",t:"당산제2동"},
+	{v:"{{d.322.graph}}",t:"대림제1동"},
+	{v:"{{d.323.graph}}",t:"대림제2동"},
+	{v:"{{d.324.graph}}",t:"대림제3동"},
+	{v:"{{d.325.graph}}",t:"도림동"},
+	{v:"{{d.326.graph}}",t:"문래동"},
+	{v:"{{d.327.graph}}",t:"신길제1동"},
+	{v:"{{d.328.graph}}",t:"신길제3동"},
+	{v:"{{d.329.graph}}",t:"신길제4동"},
+	{v:"{{d.330.graph}}",t:"신길제5동"},
+	{v:"{{d.331.graph}}",t:"신길제6동"},
+	{v:"{{d.332.graph}}",t:"신길제7동"},
+	{v:"{{d.333.graph}}",t:"양평제1동"},
+	{v:"{{d.334.graph}}",t:"양평제2동"},
+	{v:"{{d.335.graph}}",t:"여의동"},
+	{v:"{{d.336.graph}}",t:"영등포동"},
+	{v:"{{d.337.graph}}",t:"영등포본동"}
+];
+
+let dong21 = [
+	{v:"0",t:"동"},
+	{v:"{{d.338.graph}}",t:"남영동"},
+	{v:"{{d.339.graph}}",t:"보광동"},
+	{v:"{{d.340.graph}}",t:"서빙고동"},
+	{v:"{{d.341.graph}}",t:"용문동"},
+	{v:"{{d.342.graph}}",t:"용산2가동"},
+	{v:"{{d.343.graph}}",t:"원효로제1동"},
+	{v:"{{d.344.graph}}",t:"원효로제2동"},
+	{v:"{{d.345.graph}}",t:"이촌제1동"},
+	{v:"{{d.346.graph}}",t:"이촌제2동"},
+	{v:"{{d.347.graph}}",t:"이태원제1동"},
+	{v:"{{d.348.graph}}",t:"이태원제2동"},
+	{v:"{{d.349.graph}}",t:"청파동"},
+	{v:"{{d.350.graph}}",t:"한강로동"},
+	{v:"{{d.351.graph}}",t:"한남동"},
+	{v:"{{d.352.graph}}",t:"효창동"},
+	{v:"{{d.353.graph}}",t:"후암동"}
+];
+	
+let dong22 = [
+	{v:"0",t:"동"},
+	{v:"{{d.354.graph}}",t:"갈현제1동"},
+	{v:"{{d.355.graph}}",t:"갈현제2동"},
+	{v:"{{d.356.graph}}",t:"구산동"},
+	{v:"{{d.357.graph}}",t:"녹번동"},
+	{v:"{{d.358.graph}}",t:"대조동"},
+	{v:"{{d.359.graph}}",t:"불광제1동"},
+	{v:"{{d.360.graph}}",t:"불광제2동"},
+	{v:"{{d.361.graph}}",t:"수색동"},
+	{v:"{{d.362.graph}}",t:"신사제1동"},
+	{v:"{{d.363.graph}}",t:"신사제2동"},
+	{v:"{{d.364.graph}}",t:"역촌동"},
+	{v:"{{d.365.graph}}",t:"응암제1동"},
+	{v:"{{d.366.graph}}",t:"응암제2동"},
+	{v:"{{d.367.graph}}",t:"응암제3동"},
+	{v:"{{d.368.graph}}",t:"증산동"},
+	{v:"{{d.369.graph}}",t:"진관동"}
+];
+
+let dong23 = [
+	{v:"0",t:"동"},
+	{v:"{{d.370.graph}}",t:"가회동"},
+	{v:"{{d.371.graph}}",t:"교남동"},
+	{v:"{{d.372.graph}}",t:"무악동"},
+	{v:"{{d.373.graph}}",t:"부암동"},
+	{v:"{{d.374.graph}}",t:"사직동"},
+	{v:"{{d.375.graph}}",t:"삼청동"},
+	{v:"{{d.376.graph}}",t:"숭인제1동"},
+	{v:"{{d.377.graph}}",t:"숭인제2동"},
+	{v:"{{d.378.graph}}",t:"이화동"},
+	{v:"{{d.379.graph}}",t:"종로1.2.3.4가동"},
+	{v:"{{d.380.graph}}",t:"종로5.6가동"},
+	{v:"{{d.381.graph}}",t:"창신제1동"},
+	{v:"{{d.382.graph}}",t:"창신제2동"},
+	{v:"{{d.383.graph}}",t:"창신제3동"},
+	{v:"{{d.384.graph}}",t:"청운효자동"},
+	{v:"{{d.385.graph}}",t:"평창동"},
+	{v:"{{d.386.graph}}",t:"혜화동"}
+];
+
+let dong24 = [
+	{v:"0",t:"동"},
+	{v:"{{d.387.graph}}",t:"광희동"},
+	{v:"{{d.388.graph}}",t:"다산동"},
+	{v:"{{d.389.graph}}",t:"동화동"},
+	{v:"{{d.390.graph}}",t:"명동"},
+	{v:"{{d.391.graph}}",t:"소공동"},
+	{v:"{{d.392.graph}}",t:"신당동"},
+	{v:"{{d.393.graph}}",t:"신당제5동"},
+	{v:"{{d.394.graph}}",t:"약수동"},
+	{v:"{{d.395.graph}}",t:"을지로동"},
+	{v:"{{d.396.graph}}",t:"장충동"},
+	{v:"{{d.397.graph}}",t:"중림동"},
+	{v:"{{d.398.graph}}",t:"청구동"},
+	{v:"{{d.399.graph}}",t:"필동"},
+	{v:"{{d.400.graph}}",t:"황학동"},
+	{v:"{{d.401.graph}}",t:"회현동"}
+];
+
+let dong25 = [
+	{v:"0",t:"동"},
+	{v:"{{d.402.graph}}",t:"망우본동"},
+	{v:"{{d.403.graph}}",t:"망우제3동"},
+	{v:"{{d.404.graph}}",t:"면목본동"},
+	{v:"{{d.405.graph}}",t:"면목제2동"},
+	{v:"{{d.406.graph}}",t:"면목제3.8동"},
+	{v:"{{d.407.graph}}",t:"면목제4동"},
+	{v:"{{d.408.graph}}",t:"면목제5동"},
+	{v:"{{d.409.graph}}",t:"면목제7동"},
+	{v:"{{d.410.graph}}",t:"묵제1동"},
+	{v:"{{d.411.graph}}",t:"묵제2동"},
+	{v:"{{d.412.graph}}",t:"상봉제1동"},
+	{v:"{{d.413.graph}}",t:"상봉제2동"},
+	{v:"{{d.414.graph}}",t:"신내1동"},
+	{v:"{{d.415.graph}}",t:"신내2동"},
+	{v:"{{d.416.graph}}",t:"중화제1동"},
+	{v:"{{d.417.graph}}",t:"중화제2동"},
+];
+
+function loadGu(){
+	let h = [];
+	gu.forEach(item => {
+		h.push('<option value="' + item.v + '">' + item.t + '</option>');
+	});
+	
+	document.getElementById("gu").innerHTML = h.join("");
+}
+
+function loaddong(){
+	let honggu = document.getElementById("gu").value;
+	let h =[];
+	if(honggu == ""){
+		
+	}else{
+		if(honggu == "1"){
+			dong1.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});
+		}else if(honggu == "2"){
+			dong2.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});			
+		}else if(honggu == "3"){
+			dong3.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "4"){
+			dong4.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "5"){
+			dong5.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "6"){
+			dong6.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "7"){
+			dong7.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "8"){
+			dong8.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "9"){
+			dong9.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "10"){
+			dong10.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "11"){
+			dong11.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "12"){
+			dong12.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "13"){
+			dong13.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "14"){
+			dong14.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "15"){
+			dong15.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "16"){
+			dong16.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "17"){
+			dong17.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "18"){
+			dong18.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "19"){
+			dong19.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "20"){
+			dong20.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "21"){
+			dong21.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "22"){
+			dong22.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "23"){
+			dong23.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "24"){
+			dong24.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}else if(honggu == "25"){
+			dong25.forEach(item => {
+				h.push('<option value="' + item.v + '">' + item.t + '</option>');
+			});	
+		}
+	}	
+	document.getElementById("dong").innerHTML = h.join("");
+}
+loadGu();
+</script>
 </body>
 </html>

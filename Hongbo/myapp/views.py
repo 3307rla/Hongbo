@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import pandas as pd
 import random
+import json
 # Create your views here.
 
 def main(request):
@@ -49,15 +50,24 @@ def mapFunc(request):
     return render(request, "hmap.html", {'x':x, 'y':y})
         
 def statistics(request):
-
-    return render(request, "statistics.html")
-
-def statisticsFunc(request):
+    df = pd.read_csv('hongbo/myapp/static/csv/ingu.csv', encoding='cp949')
     
-    data = pd.read_csv('/csv/month.csv', encoding='euc-kr')
+    Q = []
+
+    for i in range(df.shape[0]):
+        Q.append([])
+        for j in range(2, 8):
+            Q[i].append(float(df.iloc[i, [j]]))
     
-    if request.method == 'POST':
-        data_statistics = ''
-        
-    return render(request, "statistics.html" , {'statistics':data_statistics})
+    df = df.drop([f'{i}월' for i in range(2, 8)], axis=1)
+    df['graph'] = Q
+    
+    df = pd.DataFrame(df)
+    
+    json_records = df.reset_index().to_json(orient='records')
+    data = []
+    data = json.loads(json_records)
+    context = {'d':data}
+
+    return render(request, "statistics.html", context)
 
