@@ -6,7 +6,5 @@ $topBtn.onclick = () => {
 }
 
 // 처음에 페이지 하단으로 스크롤 위치 지정
-window.onload = () => {
-  window.scrollTo({ top: document.body.scrollHeight });  
-}
+
 
