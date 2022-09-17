@@ -70,3 +70,4 @@ def statistics(request):
     context = {'d':data}
 
     return render(request, "statistics.html", context)
+
