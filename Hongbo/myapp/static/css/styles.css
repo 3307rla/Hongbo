@@ -83,6 +83,7 @@ h1{
 }
 
 .navbar_menu{
+	margin-left: 65px;
     display: flex;
     justify-content: flex-end;
     line-height: 100px;
@@ -92,7 +93,7 @@ h1{
 }
 
 .navbar_menu li{
-    margin-left: 125px;
+    margin-left: 120px;
     
 }
 
