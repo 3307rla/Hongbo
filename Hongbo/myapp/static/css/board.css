@@ -1,0 +1,36 @@
+
+body{
+	margin: 20px;
+}
+
+
+.text_main{
+	text-align: center;
+	color: gray;
+}
+
+.insertbtn{
+	margin-right: 100px;
+}
+
+.table{
+	width: 95%;
+	text-align: center;
+}
+
+.footer {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+	padding: 15px 0;
+	
+	text-align: center;
+	
+	color : gray;
+}
