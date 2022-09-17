@@ -235,7 +235,7 @@ h1{
 
 .contents5{
     width: 800px;
-    height: 350px;
+    height: 520px;
     border: 2px solid gray;
     padding: 10px;
     box-sizing: border-box; /* 추가 */
@@ -244,12 +244,12 @@ h1{
 
 .text_use{
     color: gray;
-    padding: 10px 30px 10px 30px;
+    padding: 10px 30px 150px 30px;
 }
 
 .text_use p{
     font-family: 'Nanum Brush Script', cursive;
-    font-size: 30px; 
+    font-size: 28px; 
 }
 
 button.button_4 {
@@ -305,7 +305,7 @@ button.button_4 {
 footer{
     background: #fff;
     display: flex;
-    padding: 30px;
+    padding: 180px 30px 30px 30px;
 }
 
 footer > div:first-child{
