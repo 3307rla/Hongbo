@@ -343,6 +343,9 @@ footer > div:last-child{
   background: lightblue;
 }  
 
-
+.logo {
+	width : 216px;
+	height : 100px;
+}
 
 
