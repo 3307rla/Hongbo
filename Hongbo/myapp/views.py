@@ -12,8 +12,7 @@ def main(request):
     ndata.columns = ['이름', '주소', '사이트', '이미지']
     li = []
     for i in range(9):
-        num = random.randint(0, 52)
-        # print(num)
+        num = random.randint(0, 47)
         li.append(num)
     
     df = ndata.iloc[li]
