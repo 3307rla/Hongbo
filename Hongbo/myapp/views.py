@@ -10,13 +10,10 @@ def main(request):
     data = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/%ED%8C%90%EC%B4%89%EB%AC%BC%EC%97%85%EC%B2%B4.csv", encoding='euc-kr')
     ndata = data[['LABEL-1', 'LABEL-3', 'site', 'img']]
     ndata.columns = ['이름', '주소', '사이트', '이미지']
-    li = []
-    for i in range(9):
-        num = random.randint(0, 47)
-        li.append(num)
+        
+    li = random.sample(range(0,48),9)
     
     df = ndata.iloc[li]
-    print(df)
     
     dict = {}
     
