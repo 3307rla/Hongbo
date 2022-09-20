@@ -33,26 +33,31 @@ def main(request):
 
 def hmap(request):
     
-    return render(request, "hmap.html")
-
-def mapFunc(request):
+    mapdata = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/popl_7_renew2.csv", encoding='euc-kr')
+    print(mapdata.head(3))
     
-    data = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/popl_7_renew2.csv", encoding='euc-kr')
-    print(data.head(3))
     if request.method == 'POST':
-        data = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/popl_7_renew2.csv", encoding='euc-kr')
-        print(data.head(3))
+        
         gender = request.POST.get('gender')
         age = request.POST.get('age')
         
-        data_one = data[data['성별'] == gender].nlargest(1, [age])
+        print(gender)
+        print(age)
+        
+        data_one = mapdata[mapdata['성별'] == '남자'].nlargest(1, ['0~9'])
         x = data_one['위도']
         y = data_one['경도']
         
-    return render(request, "hmap.html", {'x':x, 'y':y})
+        print(x)
+        print(y)
+    return render(request, "hmap.html")
+
+def mapFunc(request):
+        
+    return render(request)
         
 def statistics(request):
-    df = pd.read_csv('hongbo/myapp/static/csv/ingu.csv', encoding='cp949')
+    df = pd.read_csv('https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/ingu.csv', encoding='euc-kr')
     
     Q = []
 
