@@ -5,8 +5,18 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from myapp.models import BoardTab
 
 def board(request):
+    data_all = BoardTab.objects.all().order_by('-gnum', 'onum')  # 댓글 처리를 할 경우
+    per_page = 10
+    paginator = Paginator(data_all, per_page)
+    page = request.GET.get('page')
+    try:
+        datas = paginator.page(page)
+    except PageNotAnInteger:
+        datas = paginator.page(1)
+    except EmptyPage:
+        datas = paginator.page(paginator.num_pages)  
     
-    return render(request, 'board.html')
+    return render(request, 'board.html', {'datas':datas})   
 
 def insert(request):
     return render(request, 'insert.html')
@@ -83,10 +93,22 @@ def updateok(request):
     return HttpResponseRedirect('/board')  # 수정 후 목록보기    
 
 def delete(request):
-    return render(request, 'delete.html')
+    try:
+        delData = BoardTab.objects.get(id=request.GET.get('id'))
+    except Exception as e:
+            print('삭제 자료 읽기 오류 : ', e)
+            return render(request, 'error.html')
+        
+    return render(request, 'delete.html', {'data_one':delData})
 
 def deleteok(request):
-    return HttpResponseRedirect('/board')
+    delData = BoardTab.objects.get(id=request.POST.get('id'))
+    
+    if delData.name == request.POST.get('del_name'):
+        delData.delete()   
+        return HttpResponseRedirect('/board')  # 삭제 후 목록보기
+    else:
+        return render(request, 'error.html')  # 비밀번호가 틀린 경우 등
 
 
 

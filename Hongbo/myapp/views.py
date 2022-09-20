@@ -8,17 +8,12 @@ def main(request):
 
 
     data = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/%ED%8C%90%EC%B4%89%EB%AC%BC%EC%97%85%EC%B2%B4.csv", encoding='euc-kr')
-    ndata = data[['LABEL-1', 'LABEL-3', 'site']]
-    ndata.columns = ['이름', '주소', '사이트']
-    # print(ndata.iloc[[0,1,3,5]])
-    li = []
-    for i in range(9):
-        num = random.randint(0, 52)
-        # print(num)
-        li.append(num)
+    ndata = data[['LABEL-1', 'LABEL-3', 'site', 'img']]
+    ndata.columns = ['이름', '주소', '사이트', '이미지']
+        
+    li = random.sample(range(0,48),9)
     
     df = ndata.iloc[li]
-    print(df)
     
     dict = {}
     
@@ -26,7 +21,8 @@ def main(request):
         dict['dict'+str(i)] = {
             '이름':df.iloc[i].이름,
             '주소':df.iloc[i].주소,
-            '사이트':df.iloc[i].사이트
+            '사이트':df.iloc[i].사이트,
+            '이미지':df.iloc[i].이미지
             }
     
     return render(request, 'main.html', {'dict':dict})
@@ -57,6 +53,7 @@ def mapFunc(request):
     return render(request)
         
 def statistics(request):
+    
     df = pd.read_csv('https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/ingu.csv', encoding='euc-kr')
     
     Q = []

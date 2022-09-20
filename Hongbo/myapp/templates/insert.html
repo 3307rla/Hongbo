@@ -19,29 +19,119 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap"
 	rel="stylesheet">
 <link href="{%static 'css/styles.css' %}" rel="stylesheet" />
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
 <link href="{%static 'css/board.css' %}"  rel="stylesheet"/>	
 <link href="{%static 'css/form.css' %}"  rel="stylesheet"/>
+
+<style type="text/css">
+.form-style-3{
+	max-width: 450px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	margin: 0 auto;
+}
+.form-style-3 label{
+	display:block;
+	margin-bottom: 10px;
+}
+.form-style-3 label > span{
+	float: left;
+	width: 100px;
+	color: #F072A9;
+	font-weight: bold;
+	font-size: 13px;
+	text-shadow: 1px 1px 1px #fff;
+}
+.form-style-3 fieldset{
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	margin: 0px 0px 10px 0px;
+	border: 1px solid #FFD2D2;
+	padding: 20px;
+	background: #FFF4F4;
+	box-shadow: inset 0px 0px 15px #FFE5E5;
+	-moz-box-shadow: inset 0px 0px 15px #FFE5E5;
+	-webkit-box-shadow: inset 0px 0px 15px #FFE5E5;
+	text-align: center;
+
+}
+.form-style-3 fieldset legend{
+	color: #FFA0C9;
+	border-top: 1px solid #FFD2D2;
+	border-left: 1px solid #FFD2D2;
+	border-right: 1px solid #FFD2D2;
+	border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	background: #FFF4F4;
+	padding: 0px 8px 3px 8px;
+	box-shadow: -0px -1px 2px #F1F1F1;
+	-moz-box-shadow:-0px -1px 2px #F1F1F1;
+	-webkit-box-shadow:-0px -1px 2px #F1F1F1;
+	font-weight: normal;
+	font-size: 12px;
+}
+.form-style-3 textarea{
+	width:250px;
+	height:100px;
+}
+.form-style-3 input[type=text],
+.form-style-3 input[type=date],
+.form-style-3 input[type=datetime],
+.form-style-3 input[type=number],
+.form-style-3 input[type=search],
+.form-style-3 input[type=time],
+.form-style-3 input[type=url],
+.form-style-3 input[type=email],
+.form-style-3 select, 
+.form-style-3 textarea{
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 1px solid #FFC2DC;
+	outline: none;
+	color: #F072A9;
+	padding: 5px 8px 5px 8px;
+	box-shadow: inset 1px 1px 4px #FFD5E7;
+	-moz-box-shadow: inset 1px 1px 4px #FFD5E7;
+	-webkit-box-shadow: inset 1px 1px 4px #FFD5E7;
+	background: #FFEFF6;
+	width:50%;
+}
+.form-style-3  input[type=submit],
+.form-style-3  input[type=button]{
+	background: #EB3B88;
+	border: 1px solid #C94A81;
+	padding: 5px 15px 5px 15px;
+	color: #FFCBE2;
+	box-shadow: inset -1px -1px 3px #FF62A7;
+	-moz-box-shadow: inset -1px -1px 3px #FF62A7;
+	-webkit-box-shadow: inset -1px -1px 3px #FF62A7;
+	border-radius: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;	
+	font-weight: bold;
+}
+.required{
+	color:red;
+	font-weight:normal;
+}
+</style>
 </head>
 <body>
-	<div class="header" id="link_header">
-		<nav class="navbar">
-			<ul class="navbar_menu">
-				<li><a href="/main">HOME</a></li>
-				<li><a href="/hmap">H_MAP</a></li>
-				<li><a href="/statistics">통계서비스</a></li>
-				<li><a href="/board">홍보게시판</a></li>
-			</ul>
-		</nav>
-	</div>
+	<div class="header" id="link_header">  
+            <nav class="navbar">             
+                <ul class="navbar_menu">
+                    <li><a href="#link_header">HOME</a></li>
+                    <li><a href="/hmap">H_MAP</a></li>
+                    <li><a href="/statistics">통계서비스</a></li>
+                    <li><a href="/board">홍보게시판</a></li>
+                    <li><a href="#intro">이용방법</a></li>
+                </ul>
+            </nav>
+     </div>
 	<br /><br /><br />
-	<form action="/board/insertok" method="post" id="frm">
-		{% csrf_token %}
-		<table class="table" style="width: 95%">
+		<!-- <table class="table" style="width: 95%">
 			<h2>게시글 작성</h2>
 			<br /><br />
 			<tr>
@@ -66,15 +156,23 @@
 					<input type="button" value="등  록" id="btnOk" class="btn-success">
 				</td>
 			</tr>
-		</table>
-	</form>
+		</table> -->
+		<div class="form-style-3">
+		<form action="/board/insertok" method="post" id="frm">
+		{% csrf_token %}
+			<fieldset><legend>Personal</legend>
+			<label for="field1"><span>이름 <span class="required">*</span></span><input type="text" class="input-field" name="name" value="{{data_one.name}}" /></label>
+			<label for="field2"><span>이메일 <span class="required">*</span></span><input type="email" class="input-field" name="mail" value="{{data_one.mail}}" /></label>
+			<label for="field3"><span>제목 <span class="required">*</span></span><input type="text" class="input-field" name="title" value="{{data_one.title}}" /></label>
+			<label for="field4"><span>전화 <span class="required">*</span></span><input type="text" class="input-field" name="phone" value="" /></label>
+			</fieldset>
+			<fieldset><legend>Message</legend>
+			<label for="field6"><span>메시지 <span class="required">*</span></span><textarea name="field6" class="textarea-field"></textarea></label>
+			<label><span> </span><input type="submit" value="등록" id="btnOk"/></label>
+			</fieldset>
+			</form>
+		</div>
 	
-	<!-- footer --> 
-  	<div class="footer">
-       AcornAcademy <br>
-       COPYRIGHT 2022. ALL RIGHT RESERVED.
-   	</div>
-
 	<script type="text/javascript">
 		window.onload = function() {
 			document.getElementById("btnOk").onclick = chkFunc;
