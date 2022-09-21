@@ -61,24 +61,26 @@ select {
 }
 </style>
 <body>
-	<div class="header" id="link_header">
-		<nav class="navbar">
-			<ul class="navbar_menu">
-				<li><a href="/main">HOME</a></li>
-				<li><a href="/hmap">H_MAP</a></li>
-				<li><a href="/statistics">통계서비스</a></li>
-				<li><a href="#link_main_text2">홍보게시판</a></li>
-			</ul>
-		</nav>
-	</div>
+	<div class="header" id="link_header">  
+            <nav class="navbar">             
+                <ul class="navbar_menu">
+                    <li><a href="/main">HOME</a></li>
+                    <li><a href="/hmap">H_MAP</a></li>
+                    <li><a href="/statistics">통계서비스</a></li>
+                    <li><a href="/board">홍보게시판</a></li>
+                    <li><a href="#intro">이용방법</a></li>
+                </ul>
+            </nav>
+     </div>
 	<div class="intro_text">
 		<!-- 셀렉트 박스 -->
-		<form method="post" name="select">
+		<form method="post" name="select" action="statistics">
 			<div class="container">
 				<div class="row">
 					<div class="col-2">
 						<select class="form-select" id="gu" name="gu"
 							onchange="loaddong();">
+							<option>구</option>
 						</select>
 					</div>
 					<div class="col-2">
@@ -86,6 +88,7 @@ select {
 							onchange="handleOnChange(this);">
 							<option>동</option>
 						</select>
+						<input type="submit" value="선택"/>
 					</div>
 				</div>
 			</div>
@@ -104,8 +107,9 @@ select {
 	</div>
 
 <script type="text/javascript">
+
 //그래프 설정
-Highcharts.chart('container', {
+var chart = Highcharts.chart('container', {
 
     title: {
         text: ' '
@@ -135,18 +139,19 @@ Highcharts.chart('container', {
     	
 	}],
     
-});		
-
+});	
 
 // 셀렉트 이벤트	
 function handleOnChange(h) {
 	  // 선택된 데이터 가져오기
-	  const value = h.value;
+	  const population = h.value;
 	  
 	  // 데이터 출력
 	  document.getElementById('container').innerText
-		= value
-		}
+		= population
+	
+	chart.series[0].setData(population);
+}
 		
 // 셀렉트 박스 	
 let gu = [
@@ -816,6 +821,9 @@ function loaddong(){
 	document.getElementById("dong").innerHTML = h.join("");
 }
 loadGu();
+
+
+
 </script>
 </body>
 </html>

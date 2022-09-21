@@ -49,7 +49,9 @@ def hmap(request):
         y2 = y.iloc[[2]].values[0, 0]
         y3 = y.iloc[[3]].values[0, 0]
         
-    return render(request, "hmap.html", {'x1':x1, 'x2':x2, 'x3':x3, 'y1':y1, 'y2':y2, 'y3':y3})
+        return render(request, "hmap.html", {'x1':x1, 'x2':x2, 'x3':x3, 'y1':y1, 'y2':y2, 'y3':y3})
+
+    return render(request, "hmap.html")
 
 def mapFunc(request):
     
@@ -100,6 +102,10 @@ def statistics(request):
     data = []
     data = json.loads(json_records)
     context = {'d':data}
+    
+    if request.method == 'POST':
+        gu = request.POST.get('gu')
+        dong = request.POST.get('dong')
 
     return render(request, "statistics.html", context)
 

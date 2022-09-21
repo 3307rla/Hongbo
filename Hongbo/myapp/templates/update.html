@@ -84,46 +84,46 @@
         <div class="col-md-7">
           <div class="form h-100 contact-wrap p-5">
             <h3 class="text-center">게시글 수정 입력</h3>
-            <form class="mb-5" method="post" id="contactForm" name="contactForm">
+            <form class="mb-5" action="/board/updateok" method="post" id="contactForm" name="contactForm">{% csrf_token %}
+            <input type="hidden" name="id" value="{{data_one.id}}">
               <div class="row">
                 <div class="col-md-6 form-group mb-3">
-                  <label for="" class="col-form-label">작성자 *</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="이름을 입력하세요">
+                  <label for="" class="col-form-label">작성자</label>
+                  <input type="text" class="form-control" name="name" id="name" value="{{data_one.name}}">
                 </div>
                 <div class="col-md-6 form-group mb-3">
-                  <label for="" class="col-form-label">이메일 *</label>
-                  <input type="email" class="form-control" name="email" id="email"  placeholder="이메일을 입력하세요">
+                  <label for="" class="col-form-label">이메일</label>
+                  <input type="email" class="form-control" name="mail" id="mail" value="{{data_one.mail}}">
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-12 form-group mb-3">
                   <label for="budget" class="col-form-label">제목</label>
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력하세요">
+                  <input type="text" class="form-control" name="title" id="title" value="{{data_one.title}}">
                 </div>
               </div>
 
               <div class="row mb-5">
                 <div class="col-md-12 form-group mb-3">
-                  <label for="message" class="col-form-label">메시지 *</label>
-                  <textarea class="form-control" name="message" id="message" cols="30" rows="4"  placeholder="글 내용을 입력하세요"></textarea>
+                  <label for="message" class="col-form-label">메시지</label>
+                  <textarea class="form-control" name="cont" id="cont" cols="30" rows="4"  >{{data_one.cont}}</textarea>
                 </div>
               </div>
               <div class="row justify-content-center">
                 <div class="col-md-5 form-group text-center">
-                  <input type="submit" value="등록" class="btn btn-block btn-primary rounded-0 py-2 px-4">
-                  <input type="submit" value="돌아가기" class="btn btn-block btn-primary rounded-0 py-2 px-4">
+                  <input type="submit" value="수정하기" class="btn btn-block btn-primary rounded-0 py-2 px-4">
+                  <input type="submit" value="돌아가기" class="btn btn-block btn-primary rounded-0 py-2 px-4" onclick="history.back()"	>
                   <span class="submitting"></span>
                 </div>
               </div>
             </form>
-
-      </div>
+      		</div>
         </div>
       </div>
     </div>
-
   </div>
+  
 	<script type="text/javascript">
 		window.onload = function() {
 			document.querySelector("#btnUpdate").onclick = function() {
