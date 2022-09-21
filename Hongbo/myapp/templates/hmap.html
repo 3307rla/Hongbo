@@ -13,6 +13,7 @@
 
 </head>
 <body>
+	
 	<div class="header" id="link_header">  
             <nav class="navbar">             
                 <ul class="navbar_menu">
@@ -26,17 +27,51 @@
      </div>
 	<div class="intro_text">
 		<!-- <h1>홍보와 놀보</h1> -->
-		<form action="">
+		<form action="hmap" method="post">{%csrf_token%}
 			<select name="age">
 				<option value="0~9">0세에서 9세</option>
+				<option value="10~19">10세에서 19세</option>
+				<option value="20~29">20세에서 29세</option>
+				<option value="30~39">30세에서 39세</option>
+				<option value="40~49">40세에서 49세</option>
+				<option value="50~59">50세에서 59세</option>
+				<option value="60~69">60세에서 69세</option>
+				<option value="70~">70세이상</option>
 			</select>
 			<select name="gender">
-				<option value="남자">남자</option>
-				<option value="여자">여자</option>
+				<option value="남">남자</option>
+				<option value="여">여자</option>
+			</select>
+			<select name="time">
+				<option value="0">0시</option>
+				<option value="1">1시</option>
+				<option value="1">2시</option>
+				<option value="1">3시</option>
+				<option value="1">4시</option>
+				<option value="1">5시</option>
+				<option value="1">6시</option>
+				<option value="1">7시</option>
+				<option value="1">8시</option>
+				<option value="1">9시</option>
+				<option value="1">10시</option>
+				<option value="1">11시</option>
+				<option value="1">12시</option>
+				<option value="1">13시</option>
+				<option value="1">14시</option>
+				<option value="1">15시</option>
+				<option value="1">16시</option>
+				<option value="1">17시</option>
+				<option value="1">18시</option>
+				<option value="1">19시</option>
+				<option value="1">20시</option>
+				<option value="1">21시</option>
+				<option value="1">22시</option>
+				<option value="1">23시</option>
+				<option value="1">24시</option>
 			</select>
 			<input type="submit" value="선택"/>
 		</form>
-		{{x}}{{y}}
+
 		<br> <br>
 		<!-- <h4 class="contents">CREATE BY 3조</h4> -->
 	</div>
@@ -61,10 +96,17 @@
 	        minLevel: 10 // 클러스터 할 최소 지도 레벨 
 	    });
 		
+		var x1 = parseFloat("{{x1}}")
+		var x2 = parseFloat("{{x2}}")
+		var x3 = parseFloat("{{x3}}")
+		var y1 = parseFloat("{{y1}}")
+		var y2 = parseFloat("{{y2}}")
+		var y3 = parseFloat("{{y3}}")
+		
 		var 데이터 = [
-			[37.49879519999992, 127.02753629999934, '<div style="padding: 5px">에이콘</div>'],
-			[37.500643100000254, 127.03219219999946, '<div style="padding: 5px">역삼역</div>'],
-			[37.497951699999575, 127.02343460000012, '<div style="padding: 5px">강남역</div>']
+			[x1, y1, '<div style="padding: 5px">에이콘</div>'],
+			[x2, y2, '<div style="padding: 5px">역삼역</div>'],
+			[x3, y3, '<div style="padding: 5px">강남역</div>']
 		];
 		
 		var markers = [];
