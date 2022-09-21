@@ -6,17 +6,12 @@ import json
 
 def main(request):
     data = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/%ED%8C%90%EC%B4%89%EB%AC%BC%EC%97%85%EC%B2%B4.csv", encoding='euc-kr')
-    ndata = data[['LABEL-1', 'LABEL-3', 'site']]
-    ndata.columns = ['이름', '주소', '사이트']
-    # print(ndata.iloc[[0,1,3,5]])
-    li = []
-    for i in range(9):
-        num = random.randint(0, 52)
-        # print(num)
-        li.append(num)
+    ndata = data[['LABEL-1', 'LABEL-3', 'site', 'img']]
+    ndata.columns = ['이름', '주소', '사이트', '이미지']
+        
+    li = random.sample(range(0,48),9)
     
     df = ndata.iloc[li]
-    print(df)
     
     dict = {}
     
@@ -24,32 +19,52 @@ def main(request):
         dict['dict'+str(i)] = {
             '이름':df.iloc[i].이름,
             '주소':df.iloc[i].주소,
-            '사이트':df.iloc[i].사이트
+            '사이트':df.iloc[i].사이트,
+            '이미지':df.iloc[i].이미지
             }
     
     return render(request, 'main.html', {'dict':dict})
 
 def hmap(request):
     
+
     return render(request, "hmap.html")
 
 def mapFunc(request):
     
     data = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/popl_7_renew2.csv", encoding='euc-kr')
+
     if request.method == 'POST':
-        data = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/popl_7_renew2.csv", encoding='euc-kr')
-        print(data.head(3))
+        
+        mapdata = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/popl_7_renew2.csv", encoding='euc-kr')
+        
+        mapdata.set_index("시군구", inplace=True)
+        
         gender = request.POST.get('gender')
         age = request.POST.get('age')
+        time = request.POST.get('time')
         
-        data_one = data[data['성별'] == gender].nlargest(1, [age])
-        x = data_one['위도']
-        y = data_one['경도']
+        data_one = mapdata[(mapdata['성별'] == gender) & (mapdata['시간대구분'] == 14)].nlargest(4, [age], keep='first')
+        x = data_one[['위도']]
+        y = data_one[['경도']]
         
-    return render(request, "hmap.html", {'x':x, 'y':y})
+        x1 = x.iloc[[1]].values[0, 0]
+        x2 = x.iloc[[2]].values[0, 0]
+        x3 = x.iloc[[3]].values[0, 0]
+        
+        y1 = y.iloc[[1]].values[0, 0]
+        y2 = y.iloc[[2]].values[0, 0]
+        y3 = y.iloc[[3]].values[0, 0]
+        
+    return render(request, "hmap.html", {'x1':x1, 'x2':x2, 'x3':x3, 'y1':y1, 'y2':y2, 'y3':y3})
+
+def mapFunc(request):
+        
+    return render(request)
         
 def statistics(request):
-    df = pd.read_csv('https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/ingu.csv', encoding='cp949')
+    
+    df = pd.read_csv('https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/ingu.csv', encoding='euc-kr')
     
     Q = []
 

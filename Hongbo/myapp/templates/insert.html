@@ -161,13 +161,13 @@
 		<form action="/board/insertok" method="post" id="frm">
 		{% csrf_token %}
 			<fieldset><legend>Personal</legend>
-			<label for="field1"><span>Name <span class="required">*</span></span><input type="text" class="input-field" name="name" value="" /></label>
-			<label for="field2"><span>Email <span class="required">*</span></span><input type="email" class="input-field" name="mail" value="" /></label>
-			<label for="field3"><span>Content <span class="required">*</span></span><input type="text" class="input-field" name="content" value="" /></label>
-			<label for="field3"><span>Phone <span class="required">*</span></span><input type="text" class="input-field" name="phone" value="" /></label>
+			<label for="field1"><span>이름 <span class="required">*</span></span><input type="text" class="input-field" name="name" value="{{data_one.name}}" /></label>
+			<label for="field2"><span>이메일 <span class="required">*</span></span><input type="email" class="input-field" name="mail" value="{{data_one.mail}}" /></label>
+			<label for="field3"><span>제목 <span class="required">*</span></span><input type="text" class="input-field" name="title" value="{{data_one.title}}" /></label>
+			<label for="field4"><span>전화 <span class="required">*</span></span><input type="text" class="input-field" name="phone" value="" /></label>
 			</fieldset>
 			<fieldset><legend>Message</legend>
-			<label for="field6"><span>Message <span class="required">*</span></span><textarea name="field6" class="textarea-field"></textarea></label>
+			<label for="field6"><span>메시지 <span class="required">*</span></span><textarea name="field6" class="textarea-field"></textarea></label>
 			<label><span> </span><input type="submit" value="등록" id="btnOk"/></label>
 			</fieldset>
 			</form>
