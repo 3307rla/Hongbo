@@ -101,11 +101,7 @@ def statistics(request):
     json_records = df.reset_index().to_json(orient='records')
     data = []
     data = json.loads(json_records)
-    context = {'d':data}
     
-    if request.method == 'POST':
-        gu = request.POST.get('gu')
-        dong = request.POST.get('dong')
-
-    return render(request, "statistics.html", context)
+        
+    return render(request, "statistics.html", {'d':data})
 

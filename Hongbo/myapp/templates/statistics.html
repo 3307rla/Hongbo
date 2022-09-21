@@ -74,7 +74,7 @@ select {
      </div>
 	<div class="intro_text">
 		<!-- 셀렉트 박스 -->
-		<form method="post" name="select" action="statistics">
+		<form method="post" name="select" action="statistics">{%csrf_token%}
 			<div class="container">
 				<div class="row">
 					<div class="col-2">
@@ -88,7 +88,6 @@ select {
 							onchange="handleOnChange(this);">
 							<option>동</option>
 						</select>
-						<input type="submit" value="선택"/>
 					</div>
 				</div>
 			</div>
@@ -146,11 +145,41 @@ function handleOnChange(h) {
 	  // 선택된 데이터 가져오기
 	  const population = h.value;
 	  
-	  // 데이터 출력
-	  document.getElementById('container').innerText
-		= population
-	
-	chart.series[0].setData(population);
+	  var arr = JSON.parse(population);
+	  
+	  
+	//그래프 설정
+	  var chart = Highcharts.chart('container', {
+
+	      title: {
+	          text: ' '
+	      },
+
+	      yAxis: {
+	          title: {
+	              text: ' '
+	          }
+	      },
+
+	      xAxis: {
+	          categories: ['2월', '3월', '4월', '5월', '6월', '7월']
+	      },
+
+	      plotOptions: {
+	          series: {
+	              label: {
+	                  connectorAllowed: false
+	              },
+	          }
+	      },
+
+	      series: [{
+	          name: '인구수',
+	          data: [parseFloat(arr[0]),parseFloat(arr[1]),parseFloat(arr[2]),parseFloat(arr[3]),parseFloat(arr[4]),parseFloat(arr[5])]
+	      	
+	  	}],
+	      
+	  });	
 }
 		
 // 셀렉트 박스 	
