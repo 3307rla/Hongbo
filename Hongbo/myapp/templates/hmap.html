@@ -176,8 +176,6 @@ select {
 	        minLevel: 8 // 클러스터 할 최소 지도 레벨 
 	    });
 		
-		new kakao.maps.Size(100, 100);
-		
 		var x1 = parseFloat("{{x1}}")
 		var x2 = parseFloat("{{x2}}")
 		var x3 = parseFloat("{{x3}}")
@@ -186,9 +184,9 @@ select {
 		var y3 = parseFloat("{{y3}}")
 		
 		var 데이터 = [
-			[x1, y1, '<div style="padding: 5px">{{읍면동1}}</div>'],
-			[x2, y2, '<div style="padding: 5px">{{읍면동2}}</div>'],
-			[x3, y3, '<div style="padding: 5px">{{읍면동3}}</div>']
+			[x1, y1, '<div style="font-size: 2em;">{{읍면동1}}</div>'],
+			[x2, y2, '<div style="font-size: 2em;">{{읍면동2}}</div>'],
+			[x3, y3, '<div style="font-size: 2em;">{{읍면동3}}</div>']
 		];
 		
 		var markers = [];
