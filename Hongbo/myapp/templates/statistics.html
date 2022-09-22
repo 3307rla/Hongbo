@@ -74,11 +74,19 @@ select {
                     <li><a href="/hmap">H_MAP</a></li>
                     <li><a href="/statistics">통계서비스</a></li>
                     <li><a href="/board">홍보게시판</a></li>
-                    <li><a href="#intro">이용방법</a></li>
+                    <li><a href="/main#intro">이용방법</a></li>
                 </ul>
             </nav>
      </div>
 	<div class="intro_text">
+		<ul class="amount">
+            <li>
+                    <div class="contents1">
+                    	<p>서울 열린 데이터 광장에서 수집한 2021.09 ~ 2022.08의 유동인구 데이터를 기반으로 제작되었습니다.</p>
+                    	<p>출처 : https://data.seoul.go.kr/ 서울 열린데이터 광장</p>
+                    </div>          
+            </li>          
+        </ul> 
 		<!-- 셀렉트 박스 -->
 		<form method="post" name="select" action="statistics">{%csrf_token%}
 			<div class="container">
