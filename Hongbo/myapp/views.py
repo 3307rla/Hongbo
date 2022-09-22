@@ -37,49 +37,29 @@ def hmap(request):
         age = request.POST.get('age')
         time = request.POST.get('time')
         
-        data_one = mapdata[(mapdata['성별'] == gender) & (mapdata['시간대구분'] == 14)].nlargest(4, [age], keep='first')
+        data_one = mapdata[(mapdata['성별'] == gender) & (mapdata['시간대구분'] == 14)].nlargest(3, [age], keep='first')
         x = data_one[['위도']]
         y = data_one[['경도']]
         
-        x1 = x.iloc[[1]].values[0, 0]
-        x2 = x.iloc[[2]].values[0, 0]
-        x3 = x.iloc[[3]].values[0, 0]
         
-        y1 = y.iloc[[1]].values[0, 0]
-        y2 = y.iloc[[2]].values[0, 0]
-        y3 = y.iloc[[3]].values[0, 0]
+        info = data_one[['읍면동']]
         
-        return render(request, "hmap.html", {'x1':x1, 'x2':x2, 'x3':x3, 'y1':y1, 'y2':y2, 'y3':y3})
+        info1 = info.iloc[[0]].values[0, 0]
+        info2 = info.iloc[[1]].values[0, 0]
+        info3 = info.iloc[[2]].values[0, 0]
+        
+        x1 = x.iloc[[0]].values[0, 0]
+        x2 = x.iloc[[1]].values[0, 0]
+        x3 = x.iloc[[2]].values[0, 0]
+        
+        y1 = y.iloc[[0]].values[0, 0]
+        y2 = y.iloc[[1]].values[0, 0]
+        y3 = y.iloc[[2]].values[0, 0]
+        
+        return render(request, "hmap.html", {'x1':x1, 'x2':x2, 'x3':x3, 'y1':y1, 'y2':y2, 'y3':y3, '읍면동1':info1, '읍면동2':info2, '읍면동3':info3})
 
     return render(request, "hmap.html")
 
-def mapFunc(request):
-    
-    data = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/popl_7_renew2.csv", encoding='euc-kr')
-
-    if request.method == 'POST':
-        
-        mapdata = pd.read_csv("https://raw.githubusercontent.com/3307rla/Hongbo/main/Hongbo/myapp/static/csv/popl_7_renew2.csv", encoding='euc-kr')
-        
-        mapdata.set_index("시군구", inplace=True)
-        
-        gender = request.POST.get('gender')
-        age = request.POST.get('age')
-        time = request.POST.get('time')
-        
-        data_one = mapdata[(mapdata['성별'] == gender) & (mapdata['시간대구분'] == 14)].nlargest(4, [age], keep='first')
-        x = data_one[['위도']]
-        y = data_one[['경도']]
-        
-        x1 = x.iloc[[1]].values[0, 0]
-        x2 = x.iloc[[2]].values[0, 0]
-        x3 = x.iloc[[3]].values[0, 0]
-        
-        y1 = y.iloc[[1]].values[0, 0]
-        y2 = y.iloc[[2]].values[0, 0]
-        y3 = y.iloc[[3]].values[0, 0]
-        
-    return render(request, "hmap.html", {'x1':x1, 'x2':x2, 'x3':x3, 'y1':y1, 'y2':y2, 'y3':y3})
 
         
 def statistics(request):

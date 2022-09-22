@@ -8,10 +8,11 @@
 <title>HongBo with NolBo</title>
 
   <!-- google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital@0;1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
 
   <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,9 +23,10 @@
   <link href="{%static 'css/styles.css' %}" rel="stylesheet"/>
   <link href="{%static 'css/board.css' %}"  rel="stylesheet"/>
   
-</head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </head>
 <body>
+	
 	<div class="header" id="link_header">  
             <nav class="navbar2">             
                 <ul class="navbar_menu2">
@@ -121,8 +123,18 @@
             <input id="inputSearch" type="text" class="form-control kw" placeholder="검색어를 입력하세요."
                    value="{{ kw|default_if_none:'' }}">
         </div>
-	
-        	
+          
+        <div class="moveTopBtn">
+        	up
+        </div>  	    
+
+        <!-- footer --> 
+       <footer>
+            <div>
+                AcornAcademy <br>
+                COPYRIGHT 2022. ALL RIGHT RESERVED.
+            </div>
+       </footer>
 	
 </body>
 </html>
