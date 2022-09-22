@@ -67,6 +67,7 @@ select {
 }
 </style>
 <body>
+<div class="wrap">
 	<div class="intro_bg">
 	<div class="header" id="link_header">  
             <nav class="navbar">             
@@ -79,7 +80,7 @@ select {
                 </ul>
             </nav>
      </div>
-	<div class="intro_text" style="margin: 0">
+	<div class="intro_text" style="margin: 210px">
 		<!-- <h1>홍보와 놀보</h1> -->
 		<form action="hmap" name="select" method="post">{%csrf_token%}
 			<div class="container">
@@ -137,17 +138,17 @@ select {
 				</div>
 			</div>
 		</form>
-
 		<br> <br>
+		<div id="map" style="width: 90%; height: 700px;"></div>
 		<!-- <h4 class="contents">CREATE BY 3조</h4> -->
 	</div>
 	
-		<div id="map" style="width: 80%; height: 500px;"></div>
+		
 	</div>
-	             
-                <div class="moveTopBtn">
-                up
-                </div>  	    
+</div>           
+    <div class="moveTopBtn">
+    up
+    </div>  	    
         <!-- footer --> 
        <footer>
             <div>
@@ -162,18 +163,20 @@ select {
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(37.49879519999992, 127.02753629999934), // 지도의 중심좌표
-			level : 10,
+			level : 8,
 		// 지도의 확대 레벨
 			mapTypeId: kakao.maps.MapTypeId.ROADMAP
 		};
-
+		
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		// 마커 클러스터러를 생성합니다 
 	    var clusterer = new kakao.maps.MarkerClusterer({
 	        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
 	        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-	        minLevel: 10 // 클러스터 할 최소 지도 레벨 
+	        minLevel: 8 // 클러스터 할 최소 지도 레벨 
 	    });
+		
+		new kakao.maps.Size(100, 100);
 		
 		var x1 = parseFloat("{{x1}}")
 		var x2 = parseFloat("{{x2}}")
@@ -183,9 +186,9 @@ select {
 		var y3 = parseFloat("{{y3}}")
 		
 		var 데이터 = [
-			[x1, y1, '<div style="padding: 5px">에이콘</div>'],
-			[x2, y2, '<div style="padding: 5px">역삼역</div>'],
-			[x3, y3, '<div style="padding: 5px">강남역</div>']
+			[x1, y1, '<div style="padding: 5px">{{읍면동1}}</div>'],
+			[x2, y2, '<div style="padding: 5px">{{읍면동2}}</div>'],
+			[x3, y3, '<div style="padding: 5px">{{읍면동3}}</div>']
 		];
 		
 		var markers = [];
