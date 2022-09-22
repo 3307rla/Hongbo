@@ -11,7 +11,7 @@
 
 
 h1{
-    font-size: 60px;
+    font-size: 100px;
     font-weight: 100;
 }
 
@@ -136,6 +136,7 @@ h1{
 .intro_text > h1,
 .intro_text > h4{
     color: #fff;
+    font-size: 85px;
 }
 
 /* main_text0" */
@@ -348,4 +349,35 @@ footer > div:last-child{
 	height : 90px;
 }
 
+.navbar_2 {
+    width: 1280px;
+    margin: auto;
+    height: 86px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    position:relative;
+    z-index: 1;
+    
+}
 
+.navbar_menu2{
+	margin-left: 65px;
+    display: flex;
+    justify-content: flex-end;
+    line-height: 100px;
+    width:calc(1280px - 300px);
+    text-align: center;
+    list-style: none;
+}
+
+.navbar_menu2 li{
+    margin-left: 120px;
+    
+}
+
+.navbar_menu2 > li > a{
+    text-decoration: none;
+	color: #967E76;
+}
