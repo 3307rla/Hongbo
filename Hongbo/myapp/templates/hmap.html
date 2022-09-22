@@ -87,13 +87,17 @@ select {
                 </ul>
             </nav>
      </div>
-
-      <div class="text-center">
-     <br>
-            <p>H MAP은 무분별한 홍보로 인해 <br> 고통을 받는 모든 스타트업 또는 자영업자 들에게 제공하기 위해서 만들어 졌습니다<br>(홍보가 필요한 모든이에게 H_MAP의 서비스를 이용할 수 있습니다 :)<br>*아래 나이대와 성별, 궁굼한 시간대를 설정 후 검색 해주세요!*</p>
-     <br>
-     </div>
    <div class="intro_text" style="margin: 50px">
+   <br><br>
+
+   	  <ul class="amount">
+            <li>
+                    <div class="contents1">
+                    	            <p>*아래 나이대와 성별, 궁굼한 시간대를 설정 후 검색 해주세요!*</p>
+                    	            <p>출처 : https://data.seoul.go.kr/ 서울 열린데이터 광장</p>
+                    </div>          
+            </li>          
+      </ul>
       <!-- <h1>홍보와 놀보</h1> -->
       <form action="hmap" name="select" method="post">{%csrf_token%}
          <div class="container">
@@ -197,9 +201,10 @@ select {
       var y3 = parseFloat("{{y3}}")
       
       var 데이터 = [
-         [x1, y1, '<div style="font-size: 2em; padding-left: 20px;">{{읍면동1}}</div>'],
-         [x2, y2, '<div style="font-size: 2em; padding-left: 20px;">{{읍면동2}}</div>'],
-         [x3, y3, '<div style="font-size: 2em; padding-left: 20px;">{{읍면동3}}</div>']
+
+         [x1, y1, '<div style="text-align:center;font-size: 2em;">{{읍면동1}}</div>'],
+         [x2, y2, '<div style="text-align:center;font-size: 2em;">{{읍면동2}}</div>'],
+         [x3, y3, '<div style="text-align:center;font-size: 2em;">{{읍면동3}}</div>']
       ];
       
       var markers = [];
